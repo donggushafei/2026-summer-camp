@@ -67,27 +67,6 @@
             border-radius: 6px;
         }
 
-        .interest-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 5px;
-        }
-
-        .interest-tag {
-            background: #eee;
-            padding: 5px 10px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: all 0.2s;
-        }
-
-        .interest-tag.selected {
-            background: var(--accent-color);
-            color: white;
-        }
-
         button {
             background-color: var(--accent-color);
             color: white;
@@ -107,7 +86,7 @@
             background: #e8f4f8;
             padding: 15px;
             border-radius: 8px;
-            margin-top: 15px;
+            margin-top: 5px;
         }
 
         .grid-container {
@@ -225,7 +204,7 @@
         .highlight-box {
             background-color: #fff3cd;
             border: 1px solid #ffeeba;
-            padding: 10px;
+            padding: 15px;
             border-radius: 6px;
             margin-top: 10px;
         }
@@ -233,7 +212,7 @@
             background-color: #f8d7da;
             border: 1px solid #f5c6cb;
             color: #721c24;
-            padding: 10px;
+            padding: 15px;
             border-radius: 6px;
             margin-top: 10px;
         }
@@ -266,11 +245,6 @@
             border-radius: 6px;
             margin-top: 15px;
         }
-        .info-sub-section h4 {
-            color: var(--primary-color);
-            margin-bottom: 8px;
-            border-bottom: 2px solid var(--primary-color);
-        }
         .bath-table-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -286,57 +260,17 @@
         <p>集結最新出隊時程、個人化排班、完整課輔午休與洗澡資訊的數位基地</p>
     </header>
 
-    <!-- 社員登入與切換系統 -->
+    <!-- 社員選取與切換系統 -->
     <section class="system-section">
-        <h2>建立/切換個人檔案</h2>
-        <div id="registerForm">
-            <div class="form-group">
-                <div>
-                    <label>姓名</label>
-                    <input type="text" id="userName" placeholder="例如：王昀鍇">
-                </div>
-                <div>
-                    <label>綽號</label>
-                    <input type="text" id="userNickname" placeholder="例如：阿鍇">
-                </div>
-                <div>
-                    <label>系級</label>
-                    <input type="text" id="userDept" placeholder="例如：國企三">
-                </div>
-                <div>
-                    <label>IG 帳號</label>
-                    <input type="text" id="userIg" placeholder="@example">
-                </div>
-            </div>
-            <div style="margin-bottom: 15px;">
-                <label>自選興趣（可複選最多三個）</label>
-                <div class="interest-tags" id="interestTags">
-                    <span class="interest-tag" onclick="toggleTag(this)">籃球</span>
-                    <span class="interest-tag" onclick="toggleTag(this)">排球</span>
-                    <span class="interest-tag" onclick="toggleTag(this)">吉他/彈唱</span>
-                    <span class="interest-tag" onclick="toggleTag(this)">鋼琴/樂器</span>
-                    <span class="interest-tag" onclick="toggleTag(this)">登山/戶外</span>
-                    <span class="interest-tag" onclick="toggleTag(this)">烹飪/烘焙</span>
-                    <span class="interest-tag" onclick="toggleTag(this)">攝影/紀錄</span>
-                    <span class="interest-tag" onclick="toggleTag(this)">桌遊</span>
-                    <span class="interest-tag" onclick="toggleTag(this)">調酒/品茗</span>
-                </div>
-            </div>
-            <div class="form-group">
-                <div style="grid-column: span 2;">
-                    <label>想說的一句話</label>
-                    <input type="text" id="userQuote" placeholder="這次出隊請多多指教！">
-                </div>
-            </div>
-            <button onclick="registerMember()">送出並儲存資料</button>
-        </div>
-
+        <h2>👤 請選取你的名字切換專屬視角</h2>
+        <p style="color:#666; font-size:0.9em; margin-bottom:10px;">切換後，點選下方「個人客製化排班查詢」即可一鍵顯示你在山上的所有專屬組別與值班資訊！</p>
         <div class="user-selector-zone">
-            <strong>目前切換視角：</strong>
+            <strong>目前選取社員：</strong>
             <select id="userSelector" onchange="switchView()">
-                <option value="guest">一般訪客 (顯示全面基本資訊)</option>
+                <option value="guest">一般訪客 (僅顯示大綱基本資訊)</option>
+                <!-- 由JavaScript自動生成全社23人名單 -->
             </select>
-            <span id="currentStatusText" style="color: var(--accent-color); font-weight: bold;"></span>
+            <span id="currentStatusText" style="color: var(--accent-color); font-weight: bold;">一般訪客模式</span>
         </div>
     </section>
 
@@ -349,8 +283,8 @@
         </div>
 
         <div class="grid-card" onclick="openModal('modal-members')">
-            <h3>👥 社員名單和自介</h3>
-            <p>查看所有出隊社員的系級、綽號、興趣以及大家的內心話留言板。</p>
+            <h3>👥 社員名單和自介留言板</h3>
+            <p>查看全社 23 位出隊夥伴的系級、興趣、以及出隊想對大家說的話。</p>
         </div>
 
         <div class="grid-card" onclick="openModal('modal-timeline')">
@@ -380,7 +314,7 @@
 
         <div class="grid-card" onclick="openModal('modal-bath-schedule')">
             <h3>🚿 完整盥洗沐浴洗澡表</h3>
-            <p>集中查閱禮拜五、禮拜六、禮拜天三晚的完整浴室排班與洗澡順序表。</p>
+            <p>集中查閱五、六、日三晚的完整浴室排班，每晚皆統一於 20:00 準時開洗。</p>
         </div>
 
         <div class="grid-card" onclick="openModal('modal-accounting')">
@@ -423,10 +357,9 @@
             <table id="membersTable">
                 <thead>
                     <tr>
-                        <th>姓名 (綽號)</th>
-                        <th>系級</th>
+                        <th>姓名</th>
+                        <th>校系級</th>
                         <th>興趣與標籤</th>
-                        <th>IG</th>
                         <th>想說的話</th>
                     </tr>
                 </thead>
@@ -439,16 +372,16 @@
     <div id="modal-timeline" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-timeline')">&times;</span>
-            <h2>📅 暑假出隊總時程表</h2>
+            <h2>📅 暑假出隊總時程表 (最新修正版)</h2>
             <h3>第一天 7/24 (五)</h3>
             <table>
                 <tr><th>時間</th><th>項目</th><th>說明</th></tr>
                 <tr><td>13:10-13:20</td><td>社員集合</td><td>在台中高鐵站集合 (去回程交通規範看報帳分頁)</td></tr>
                 <tr><td>13:30-15:00</td><td>前往雙龍國小</td><td>集體包車前往</td></tr>
                 <tr><td>15:00-16:30</td><td>7/25活動試跑</td><td>一組30分鐘 (暈染畫 ➡️ 傳聲筒 ➡️ 科普大地)。有簡報大概講一次，有活動帶大家做一次。確認活動流程、校對課輔小隊輔。</td></tr>
-                <tr><td>16:30-19:00</td><td>晚餐時間</td><td>自己煮 (龍坊老闆娘提供食材)，有自我介紹環節。禮拜六教案組 + 幾個禮拜日洗碗的人負責。</td></tr>
+                <tr><td>16:30-19:00</td><td>晚餐時間</td><td><strong>【16:30 煮飯組開始備料】</strong> 自己煮 (龍坊老闆娘提供食材)，有自我介紹環節。禮拜六教案組 + 幾個禮拜日洗碗的人負責。</td></tr>
                 <tr><td>19:00-20:00</td><td>7/26活動試跑</td><td>紙飛機 (7/26第一節課) 流程試跑與說明</td></tr>
-                <tr><td>20:00-21:00</td><td>輪流場佈與盥洗</td><td>開始洗澡 (洗之前記得@下一個人等)。還沒輪到洗澡的去下載簡報到圖書館、放教具、製作大/小朋友名牌雛形。</td></tr>
+                <tr><td>20:00-21:00</td><td>輪流場佈與盥洗</td><td><strong>【20:00 準時開始洗澡】</strong> (洗之前記得@下一個人等)。還沒輪到洗澡的去下載簡報到圖書館、放教具、製作大/小朋友名牌雛形。</td></tr>
                 <tr><td>21:00-</td><td>團體時間</td><td>先做完正事，再玩桌遊！</td></tr>
             </table>
             <h3>第二天 7/25 (六)</h3>
@@ -462,10 +395,10 @@
                 <tr><td>13:30-14:30</td><td>傳聲筒 (圖書館)</td><td>下午核心科普教案一</td></tr>
                 <tr><td>14:30-16:00</td><td>科普大地</td><td>下午核心科普教案二</td></tr>
                 <tr><td>16:00-16:30</td><td>小朋友放學</td><td>請小朋友回教室拿書包，穿堂集合放學，回收名牌</td></tr>
-                <tr><td>16:30-17:30</td><td>場復</td><td>收拾圖書館。當天不用煮飯的人負責收各課輔教室文具與桌遊。</td></tr>
-                <tr><td>17:30-19:30</td><td>晚餐時間</td><td>自己煮 (龍坊老闆娘提供食材)。當天負責煮飯的人準備晚餐。</td></tr>
-                <tr><td>19:30-20:30</td><td>7/26活動試跑</td><td>一組30分鐘 (氣球車 ➡️ 運動會)。確認流程與隊輔分工。</td></tr>
-                <tr><td>20:30-</td><td>輪流場佈與盥洗</td><td>開始洗澡。不盥洗時段去下載簡報、放教具、補做名牌或場勘。</td></tr>
+                <tr><td>16:30-17:30</td><td>場復與備料</td><td><strong>【16:30 煮飯組開始準備晚餐】</strong> 其餘人負責收拾圖書館、收各課輔教室文具與桌遊。</td></tr>
+                <tr><td>17:30-19:00</td><td>晚餐時間</td><td>自己煮 (龍坊老闆娘提供食材)，吃完晚餐收拾。</td></tr>
+                <tr><td>19:00-20:00</td><td>7/26活動試跑</td><td>一組30分鐘 (氣球車 ➡️ 運動會)。確認流程與隊輔分工。</td></tr>
+                <tr><td>20:00-</td><td>輪流場佈與盥洗</td><td><strong>【20:00 準時開始洗澡】</strong>。不盥洗時段去下載簡報、放教具、補做名牌或進行運動會場勘。</td></tr>
             </table>
             <h3>第三天 7/26 (日)</h3>
             <table>
@@ -480,7 +413,7 @@
                 <tr><td>16:00-17:00</td><td>場復</td><td>收拾圖書館，回收各課輔教室文具與桌遊</td></tr>
                 <tr><td>17:00-19:00</td><td>晚餐</td><td>預計吃「龍坊」</td></tr>
                 <tr><td>19:00-20:00</td><td>檢討會</td><td>出隊綜合大檢討</td></tr>
-                <tr><td>20:00-</td><td>洗澡與盥洗</td><td>星期日洗澡表時段開始</td></tr>
+                <tr><td>20:00-</td><td>洗澡與盥洗</td><td><strong>【20:00 準時開始洗澡】</strong> 星期日洗澡表時段。</td></tr>
             </table>
             <h3>第四天 7/27 (一)</h3>
             <table>
@@ -494,7 +427,7 @@
                     ● 闖關活動支援每個人 50 塊 (可互借)<br>
                     ● 買東西要打統編
                 </td></tr>
-                <tr><td>16:30-</td><td>賦歸</td><td>包車返回台中高鐵站（預計19:30抵達）</td></tr>
+                <tr><td>17:00-</td><td>賦歸</td><td>包車返回台中高鐵站（預計19:30抵達）</td></tr>
             </table>
             <div class="danger-box">
                 🍱 <strong>與食物有關的四大提醒：</strong>
@@ -515,12 +448,12 @@
             <h2>🍳 廚務煮飯洗碗組別公佈</h2>
             <div style="margin-bottom: 20px;">
                 <h3>📅 禮拜五晚飯 (7/24)</h3>
-                <p><strong>🔥 負責煮飯：</strong>吳秉庭、王彰儀、陳姵妤、蘇緯、龍耘心</p>
+                <p><strong>🔥 負責煮飯 (16:30開始)：</strong>吳秉庭、王彰儀、陳姵妤、蘇緯、龍耘心</p>
                 <p><strong>🧼 收拾洗碗：</strong>豆淮綸、李柏霆、陳思甯</p>
             </div>
             <div>
                 <h3>📅 禮拜六晚飯 (7/25)</h3>
-                <p><strong>🔥 負責煮飯：</strong>梁學銘、邱榆鈞、周筠晰、雷之語</p>
+                <p><strong>🔥 負責煮飯 (16:30開始)：</strong>梁學銘、邱榆鈞、周筠晰、雷之語</p>
                 <p><strong>🧼 收拾洗碗：</strong>陳巧恩、陳映筑、張宸瑜、廖俞程</p>
             </div>
             <div class="highlight-box">
@@ -568,12 +501,11 @@
         </div>
     </div>
 
-    <!-- 6. 文健站田野調查（正名與極簡化版） -->
+    <!-- 6. 文健站田野調查 -->
     <div id="modal-fieldwork" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-fieldwork')">&times;</span>
             <h2>🌾 文健站田野調查雲端專區</h2>
-            
             <p style="color:#555; margin-bottom:15px;">請多加利用以下官方共編雲端資料庫：</p>
 
             <div class="link-box">
@@ -639,24 +571,18 @@
                         <tr><td>C (20:30)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
                         <tr><td>D (20:45)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
                         <tr><td>E (21:00)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>F (21:15)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>G (21:30)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>H (21:45)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
                     </table>
                 </div>
 
                 <div>
-                    <h3 style="color:var(--accent-color);">📅 禮拜六晚上 (20:30開洗)</h3>
+                    <h3 style="color:var(--accent-color);">📅 禮拜六晚上 (20:00開洗)</h3>
                     <table>
                         <tr><th>時段</th><th>浴室 1</th><th>浴室 2</th></tr>
-                        <tr><td>A (21:00)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>B (21:15)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>C (21:30)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>D (21:45)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>E (22:00)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>F (22:15)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>G (22:30)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>H (22:45)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
+                        <tr><td>A (20:00)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
+                        <tr><td>B (20:15)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
+                        <tr><td>C (20:30)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
+                        <tr><td>D (20:45)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
+                        <tr><td>E (21:00)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
                     </table>
                 </div>
 
@@ -669,9 +595,6 @@
                         <tr><td>C (20:30)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
                         <tr><td>D (20:45)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
                         <tr><td>E (21:00)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>F (21:15)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>G (21:30)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>H (21:45)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
                     </table>
                 </div>
             </div>
@@ -698,88 +621,59 @@
     </div>
 
     <script>
+        // 固化內建的23人全體官方名單資料庫 (包含系級分類)
         const membersDatabase = {
-            "guest": { name: "一般訪客", nickname: "Guest", dept: "", interests: [], ig: "", quote: "" }
+            "王昀鍇": { name: "王昀鍇", dept: "台大 國企三", interests: [], ig: "", quote: "" },
+            "吳一君": { name: "吳一君", dept: "台大 政治二", interests: [], ig: "", quote: "" },
+            "彭珣禎": { name: "彭珣禎", dept: "台大 法律二", interests: [], ig: "", quote: "" },
+            "葉宣麟": { name: "葉宣麟", dept: "台大 法律一", interests: [], ig: "", quote: "" },
+            "耿筠渟": { name: "耿筠渟", dept: "商設三乙", interests: [], ig: "", quote: "" },
+            "張宸瑜": { name: "張宸瑜", dept: "台大 森林碩一", interests: [], ig: "", quote: "" },
+            "陳姵妤": { name: "陳姵妤", dept: "台大 藥學五", interests: [], ig: "", quote: "" },
+            "廖俞程": { name: "廖俞程", dept: "台大 法律系", interests: [], ig: "", quote: "" },
+            "周筠晰": { name: "周筠晰", dept: "台大 醫技二", interests: [], ig: "", quote: "" },
+            "邱榆鈞": { name: "邱榆鈞", dept: "台大 地理二", interests: [], ig: "", quote: "" },
+            "雷之語": { name: "雷之語", dept: "台大 國企四", interests: [], ig: "", quote: "" },
+            "王彰儀": { name: "王彰儀", dept: "台大 護理一", interests: [], ig: "", quote: "" },
+            "李柏霆": { name: "李柏霆", dept: "GT OMSCS碩一", interests: [], ig: "", quote: "" },
+            "梁學銘": { name: "梁學銘", dept: "師大 地理116", interests: [], ig: "", quote: "" },
+            "吳秉庭": { name: "吳秉庭", dept: "台大 地理二", interests: [], ig: "", quote: "" },
+            "蘇緯": { name: "蘇緯", dept: "航空警察局台北分局", interests: [], ig: "", quote: "" },
+            "陳思甯": { name: "陳思甯", dept: "台大 日文一", interests: [], ig: "", quote: "" },
+            "陳鄔子涵": { name: "陳鄔子涵", dept: "法律系", interests: [], ig: "", quote: "" },
+            "豆淮綸": { name: "豆淮綸", dept: "台大 戲劇四", interests: [], ig: "", quote: "" },
+            "陳君睿": { name: "陳君睿", dept: "台大 生工一", interests: [], ig: "", quote: "" },
+            "陳映筑": { name: "陳映筑", dept: "台大 法律二", interests: [], ig: "", quote: "" },
+            "龍耘心": { name: "龍耘心", dept: "台大 法律三", interests: [], ig: "", quote: "" },
+            "陳巧恩": { name: "陳巧恩", dept: "台大 政治二", interests: [], ig: "", quote: "" }
         };
 
-        const defaultKitchenNames = ["吳秉庭", "王彰儀", "陳姵妤", "蘇緯", "龍耘心", "梁學銘", "邱榆鈞", "周筠晰", "雷之語", "豆淮綸", "李柏霆", "陳思甯", "陳巧恩", "陳映筑", "張宸瑜", "廖俞程"];
-
-        function toggleTag(element) {
-            const selectedTags = document.querySelectorAll('.interest-tag.selected');
-            if (!element.classList.contains('selected') && selectedTags.length >= 3) {
-                alert('最多只能選三個標籤唷！');
-                return;
-            }
-            element.classList.toggle('selected');
-        }
-
-        function registerMember() {
-            const name = document.getElementById('userName').value.trim();
-            const nickname = document.getElementById('userNickname').value.trim();
-            const dept = document.getElementById('userDept').value.trim();
-            const ig = document.getElementById('userIg').value.trim();
-            const quote = document.getElementById('userQuote').value.trim();
-            
-            if(!name) {
-                alert('請填寫姓名！');
-                return;
-            }
-
-            const interests = [];
-            document.querySelectorAll('.interest-tag.selected').forEach(tag => interests.push(tag.innerText));
-
-            membersDatabase[name] = { name, nickname, dept, interests, ig, quote };
-
+        // 自動生成網頁下拉選單
+        window.onload = function() {
             const selector = document.getElementById('userSelector');
-            let exist = false;
-            for(let i=0; i<selector.options.length; i++) {
-                if(selector.options[i].value === name) exist = true;
-            }
-            if(!exist) {
+            Object.keys(membersDatabase).sort().forEach(name => {
                 const opt = document.createElement('option');
                 opt.value = name;
-                opt.innerHTML = `${name} (${nickname || '無綽號'})`;
+                opt.innerHTML = `${name} (${membersDatabase[name].dept})`;
                 selector.appendChild(opt);
-            }
-
+            });
             updateMembersTable();
-            selector.value = name;
-            switchView();
-
-            document.getElementById('userName').value = '';
-            document.getElementById('userNickname').value = '';
-            document.getElementById('userDept').value = '';
-            document.getElementById('userIg').value = '';
-            document.getElementById('userQuote').value = '';
-            document.querySelectorAll('.interest-tag').forEach(t => t.classList.remove('selected'));
-
-            alert(`儲存成功！已切換至 ${name} 的全新排班視角。`);
-        }
+            resetScheduleToBlank();
+        };
 
         function updateMembersTable() {
             const tbody = document.getElementById('membersListBody');
             tbody.innerHTML = '';
-
             Object.keys(membersDatabase).forEach(key => {
-                if(key === 'guest') return;
                 const m = membersDatabase[key];
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td><strong>${m.name}</strong> ${m.nickname ? `(${m.nickname})` : ''}</td>
-                    <td>${m.dept || '未填'}</td>
-                    <td>${m.interests.map(i => `<span style="background:#e67e22; color:white; padding:2px 6px; border-radius:10px; font-size:0.8em; margin-right:4px;">#${i}</span>`).join('') || '無'}</td>
-                    <td>${m.ig || '-'}</td>
-                    <td><i style="color:#555;">「${m.quote || '未填寫'}」</i></td>
+                    <td><strong>${m.name}</strong></td>
+                    <td>${m.dept}</td>
+                    <td>${m.interests.length > 0 ? m.interests.map(i => `<span style="background:#e67e22; color:white; padding:2px 6px; border-radius:10px; font-size:0.8em; margin-right:4px;">#${i}</span>`).join('') : '<span style="color:#aaa;">自介待填</span>'}</td>
+                    <td><i style="color:#555;">${m.quote || '（等候表單收集後固化）'}</i></td>
                 `;
                 tbody.appendChild(tr);
-            });
-
-            defaultKitchenNames.forEach(name => {
-                if (!membersDatabase[name]) {
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `<td>${name}</td><td>未填寫</td><td>-</td><td>-</td><td><span style="color:#aaa;">(名單預設組員，自介待填)</span></td>`;
-                    tbody.appendChild(tr);
-                }
             });
         }
 
@@ -794,12 +688,12 @@
             }
 
             const user = membersDatabase[currentSelected];
-            statusText.innerText = `已鎖定社員：${user.name}`;
+            statusText.innerText = `已鎖定社員視角：${user.name}`;
             renderNewScheduleFormat(user.name);
         }
 
         function resetScheduleToBlank() {
-            const msg = "<span style='color:#999;'>訪客模式僅顯示通則。請在上方建立或選擇個人社員名字以啟用客製化查詢。</span>";
+            const msg = "<span style='color:#999;'>訪客模式僅顯示通則。請在上方下拉選單選擇自己的名字以啟用個人客製化查詢。</span>";
             document.getElementById('fri-schedule-content').innerHTML = msg;
             document.getElementById('sat-schedule-content').innerHTML = msg;
             document.getElementById('sun-schedule-content').innerHTML = msg;
@@ -807,21 +701,23 @@
         }
 
         function renderNewScheduleFormat(name) {
+            // 週五廚務自動比對
             let friCookInfo = "❌ 今天沒有輪到你煮飯洗碗。";
             if (["吳秉庭", "王彰儀", "陳姵妤", "蘇緯", "龍耘心"].includes(name)) {
-                friCookInfo = "🔥 <strong>【煮飯組】</strong> 組員：吳秉庭、王彰儀、陳姵妤、蘇緯、龍耘心 (16:30提早廚務備料)";
+                friCookInfo = "🔥 <strong>【煮飯組】</strong> 組員：吳秉庭、王彰儀、陳姵妤、蘇緯、龍耘心 (16:30 準時提早備料料理)";
             } else if (["豆淮綸", "李柏霆", "陳思甯"].includes(name)) {
-                friCookInfo = "🧼 <strong>【洗碗組】</strong> 組員：豆淮綸、李柏霆、陳思甯 (負責今日晚餐收拾)";
+                friCookInfo = "🧼 <strong>【洗碗組】</strong> 組員：豆淮綸、李柏霆、陳思甯 (負責今日晚餐收拾與洗碗)";
             }
 
+            // 週六廚務自動比對
             let satCookInfo = "❌ 今天沒有輪到你煮飯洗碗。";
             if (["梁學銘", "邱榆鈞", "周筠晰", "雷之語"].includes(name)) {
-                satCookInfo = "🔥 <strong>【煮飯組】</strong> 組員：梁學銘、邱榆鈞、周筠晰、雷之語 (16:30場復開始後立即提早備料)";
+                satCookInfo = "🔥 <strong>【煮飯組】</strong> 組員：梁學銘、邱榆鈞、周筠晰、雷之語 (16:30 場復開始後立即提早備料)";
             } else if (["陳巧恩", "陳映筑", "張宸瑜", "廖俞程"].includes(name)) {
                 satCookInfo = "🧼 <strong>【洗碗組】</strong> 組員：陳巧恩、陳映筑、張宸瑜、廖俞程";
             }
 
-            const fallbackInstructorMsg = "<span class='instructor-badge'>ℹ️ 隊輔名單暫無你，可能為【教案講師/主課負責人】或【排休】</span>";
+            const fallbackInstructorMsg = "<span class='instructor-badge'>ℹ️ 若隊輔名單無你，可能為【教案講師/主課負責人】或【排休】</span>";
 
             // 禮拜五
             document.getElementById('fri-schedule-content').innerHTML = `
@@ -830,7 +726,7 @@
                     <ul><li><strong>組別與組員：</strong>${friCookInfo}</li></ul>
                 </div>
                 <div class="schedule-sub-block">
-                    <h5>🚿 盥洗配備 (20:00開始輪流)</h5>
+                    <h5>🚿 盥洗配備 (20:00 開始開洗)</h5>
                     <ul>
                         <li><strong>洗澡順序英文字母：</strong> ⏳ 待公佈 (進浴室洗前記得tag下一位等)</li>
                         <li><strong>前一個與下一個洗澡的是誰：</strong> ⏳ 待公佈</li>
@@ -841,7 +737,7 @@
             // 禮拜六
             document.getElementById('sat-schedule-content').innerHTML = `
                 <div class="schedule-sub-block">
-                    <h5>🏫 日間課輔與午休 (注意12:40分界線)</h5>
+                    <h5>🏫 日間課輔與午休 (注意 12:40 分界線)</h5>
                     <ul>
                         <li><strong>課輔、午休年級負責：</strong> ⏳ 待公佈</li>
                         <li><strong>課輔、午休隊輔夥伴：</strong> ⏳ 待公佈</li>
@@ -877,7 +773,7 @@
                     <ul><li><strong>組別與組員：</strong>${satCookInfo}</li></ul>
                 </div>
                 <div class="schedule-sub-block">
-                    <h5>🚿 盥洗配備 (20:30開始輪流)</h5>
+                    <h5>🚿 盥洗配備 (20:00 開始開洗)</h5>
                     <ul>
                         <li><strong>洗澡順序英文字母：</strong> ⏳ 待公佈</li>
                         <li><strong>前一個與下一個洗澡的是誰：</strong> ⏳ 待公佈</li>
@@ -920,7 +816,7 @@
                     </ul>
                 </div>
                 <div class="schedule-sub-block">
-                    <h5>🚿 盥洗配備 (20:00大檢討後開始)</h5>
+                    <h5>🚿 盥洗配備 (20:00 大檢討後準時開洗)</h5>
                     <ul>
                         <li><strong>洗澡順序英文字母：</strong> ⏳ 待公佈</li>
                         <li><strong>前一個與下一個洗澡的是誰：</strong> ⏳ 待公佈</li>
@@ -933,7 +829,7 @@
                 <div class="schedule-sub-block">
                     <h5>🧩 部落闖關解謎 (12:25)</h5>
                     <ul>
-                        <li><strong>部落燒腦闖關賽組員：</strong> ⏳ 待公佈 (每人需帶50元零錢、買東西打統編)</li>
+                        <li><strong>部落燒腦闖關賽組員：</strong> ⏳ 待公佈 (每人需帶 50 元零錢、買東西打統編)</li>
                     </ul>
                 </div>
             `;
@@ -944,9 +840,6 @@
         function openModal(id) { document.getElementById(id).style.display = "flex"; }
         function closeModal(id) { document.getElementById(id).style.display = "none"; }
         window.onclick = function(e) { if (e.target.classList.contains('modal')) e.target.style.display = "none"; }
-
-        resetScheduleToBlank();
-        updateMembersTable();
     </script>
 </body>
 </html>
