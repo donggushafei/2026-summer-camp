@@ -241,7 +241,6 @@
         <p>集結最新出隊時程、個人化排班、完整課輔午休與洗澡資訊的數位基地</p>
     </header>
 
-    <!-- 社員選取與切換系統 -->
     <section class="system-section">
         <h2>👤 請選取你的名字切換專屬視角</h2>
         <p style="color:#666; font-size:0.9em; margin-bottom:10px;">切換後，點選下方「個人客製化排班查詢」即可一鍵顯示你在山上的所有專屬組別與值班資訊！</p>
@@ -254,7 +253,6 @@
         </div>
     </section>
 
-    <!-- 資訊方格主矩陣 -->
     <div class="grid-container">
         
         <div class="grid-card" onclick="openModal('modal-my-schedule')">
@@ -299,7 +297,6 @@
 
     </div>
 
-    <!-- 1. 個人客製化排班 -->
     <div id="modal-my-schedule" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-my-schedule')">&times;</span>
@@ -324,7 +321,6 @@
         </div>
     </div>
 
-    <!-- 3. 出隊總時程表 -->
     <div id="modal-timeline" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-timeline')">&times;</span>
@@ -397,7 +393,6 @@
         </div>
     </div>
 
-    <!-- 4. 廚務分組 -->
     <div id="modal-kitchen" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-kitchen')">&times;</span>
@@ -418,7 +413,6 @@
         </div>
     </div>
 
-    <!-- 5. 完整課輔午休分組與說明 -->
     <div id="modal-class-info" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-class-info')">&times;</span>
@@ -457,7 +451,6 @@
         </div>
     </div>
 
-    <!-- 6. 文健站田野調查 -->
     <div id="modal-fieldwork" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-fieldwork')">&times;</span>
@@ -478,7 +471,6 @@
         </div>
     </div>
 
-    <!-- 7. 教學技巧與前車之鑑 -->
     <div id="modal-tips" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-tips')">&times;</span>
@@ -493,7 +485,7 @@
             <h3>📢 秩序管理與默契口號</h3>
             <ul>
                 <li><strong>常用口號</strong>：「小嘴巴，閉起來」、「注意！注意！」。可用氣音、摸鼻子或摸耳朵引導小朋友。</li>
-                <li><strong>引導技巧</strong>：點人回答問題要公平。約法三章「只點坐著且安靜的同學」，或偷偷給予暗示.</li>
+                <li><strong>引導技巧</strong>：點人回答問題要公平。約法三章「只點坐著且安靜的同學」，或偷偷給予暗示。</li>
                 <li><strong>點點機制</strong>：一律使用點點換獎品，並且實施「人人有獎」，平衡小朋友的得失心。</li>
             </ul>
             <br>
@@ -508,7 +500,6 @@
         </div>
     </div>
 
-    <!-- 8. 完整盥洗沐浴洗澡表 -->
     <div id="modal-bath-schedule" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-bath-schedule')">&times;</span>
@@ -557,7 +548,6 @@
         </div>
     </div>
 
-    <!-- 9. 交通報帳說明 -->
     <div id="modal-accounting" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-accounting')">&times;</span>
@@ -677,16 +667,16 @@
 
             let friCookInfo = "❌ 今天沒有輪到你煮飯洗碗。";
             if (["吳秉庭", "王彰儀", "陳姵妤", "蘇緯", "龍耘心"].includes(name)) {
-                friCookInfo = "🔥 <strong>【煮飯組】</strong> 組員：吳秉庭、王彰儀快速備料 (16:30 準時提早備料料理)";
+                friCookInfo = "🔥 <strong>【煮飯組】</strong> 組員：吳秉庭、王彰儀、陳姵妤、蘇緯、龍耘心 (16:30 準時提早備料料理)";
             } else if (["豆淮綸", "李柏霆", "陳思甯"].includes(name)) {
-                friCookInfo = "🧼 <strong>【洗碗組】</strong> 組員：豆淮綸、李柏霆、陳思甯 (負責今日晚餐收拾與洗碗)";
+                friCookInfo = "🧼 <strong>【洗碗組】</strong> 組員：豆淮綸", "李柏霆", "陳思甯 (負責今日晚餐收拾與洗碗)";
             }
 
             let satCookInfo = "❌ 今天沒有輪到你煮飯洗碗。";
             if (["梁學銘", "邱榆鈞", "周筠晰", "雷之語"].includes(name)) {
-                satCookInfo = "🔥 <strong>【煮飯組】</strong> 組員：梁學銘、邱榆鈞、周筠晰、雷之語 (16:30 場復開始後立即提早備料)";
+                satCookInfo = "🔥 <strong>【煮飯組】</strong> 組員：梁學銘", "邱榆鈞", "周筠晰", "雷之語 (16:30 場復開始後立即提早備料)";
             } else if (["陳巧恩", "陳映筑", "張宸瑜", "廖俞程"].includes(name)) {
-                satCookInfo = "🧼 <strong>【洗碗組】</strong> 組員：陳巧恩、陳映筑、張宸瑜、廖俞程";
+                satCookInfo = "🧼 <strong>【洗碗組】</strong> 組員：陳巧恩", "陳映筑", "張宸瑜", "廖俞程";
             }
 
             const fallbackInstructorMsg = "<span class='instructor-badge'>ℹ️ 若隊輔名單無你，可能為【教案講師/主課負責人】或【排休】</span>";
@@ -763,6 +753,10 @@
 
             document.getElementById('scheduleTitle').innerText = `👤 ${name} 的個人專屬出隊排班表`;
         }
+
+        function openModal(id) { document.getElementById(id).style.display = "flex"; }
+        function closeModal(id) { document.getElementById(id).style.display = "none"; }
+        window.onclick = function(e) { if (e.target.classList.contains('modal')) e.target.style.display = "none"; }
     </script>
 </body>
 </html>
