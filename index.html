@@ -47,37 +47,18 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
-        .form-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
         }
 
-        input, select {
+        select {
             width: 100%;
             padding: 8px;
             border: 1px solid #ddd;
             border-radius: 6px;
         }
-
-        button {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        button:hover { opacity: 0.9; }
 
         .user-selector-zone {
             display: flex;
@@ -268,7 +249,7 @@
             <strong>目前選取社員：</strong>
             <select id="userSelector" onchange="switchView()">
                 <option value="guest">一般訪客 (僅顯示大綱基本資訊)</option>
-                <!-- 由JavaScript自動生成全社23人名單 -->
+                <!-- 由JavaScript自動生成全社23人純名字名單 -->
             </select>
             <span id="currentStatusText" style="color: var(--accent-color); font-weight: bold;">一般訪客模式</span>
         </div>
@@ -280,11 +261,6 @@
         <div class="grid-card" onclick="openModal('modal-my-schedule')">
             <h3>👤 個人客製化排班查詢</h3>
             <p>一鍵看懂自己每日的課輔負責、各教案帶隊組別、廚務清洗與個人洗澡順序。</p>
-        </div>
-
-        <div class="grid-card" onclick="openModal('modal-members')">
-            <h3>👥 社員名單和自介留言板</h3>
-            <p>查看全社 23 位出隊夥伴的系級、興趣、以及出隊想對大家說的話。</p>
         </div>
 
         <div class="grid-card" onclick="openModal('modal-timeline')">
@@ -346,25 +322,6 @@
                 <h4>📅 禮拜一 (7/27)</h4>
                 <div id="mon-schedule-content"></div>
             </div>
-        </div>
-    </div>
-
-    <!-- 2. 社員名單和自介 -->
-    <div id="modal-members" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-members')">&times;</span>
-            <h2>👥 社員名單與留言板</h2>
-            <table id="membersTable">
-                <thead>
-                    <tr>
-                        <th>姓名</th>
-                        <th>校系級</th>
-                        <th>興趣與標籤</th>
-                        <th>想說的話</th>
-                    </tr>
-                </thead>
-                <tbody id="membersListBody"></tbody>
-            </table>
         </div>
     </div>
 
@@ -435,7 +392,7 @@
                     <li>1. <strong>必須自己攜帶 7/25、7/26、7/27 這三天的早餐！</strong></li>
                     <li>2. 7/24 禮拜五在高鐵集合前，請<strong>先自己吃完午餐</strong>。</li>
                     <li>3. 7/27 禮拜一回程<strong>大會沒有補助晚餐</strong>。</li>
-                    <li>4. 建議<strong>自己多帶宵夜</strong>上山。</li>
+                    <li>4. 建議<strong>自己多帶宵夜</strong>上山.</li>
                 </ul>
             </div>
         </div>
@@ -546,7 +503,7 @@
             <br>
             <h3>🛑 出隊生活雷點與檢討備忘</h3>
             <ul>
-                <li>嚴禁在小朋友面前罵髒話、圖書館內絕對不能吃任何東西。</li>
+                <li>嚴禁在小朋友面前罵髒話、圖書館內絕對不能吃 any 東西。</li>
                 <li>帶隊隊輔要負起人身安全責任，<strong>去廁所或丟垃圾必須告知夥伴，嚴禁擅自滑手機、睡覺或消失</strong>！</li>
             </ul>
         </div>
@@ -621,61 +578,26 @@
     </div>
 
     <script>
-        // 固化內建的23人全體官方名單資料庫 (包含系級分類)
-        const membersDatabase = {
-            "王昀鍇": { name: "王昀鍇", dept: "台大 國企三", interests: [], ig: "", quote: "" },
-            "吳一君": { name: "吳一君", dept: "台大 政治二", interests: [], ig: "", quote: "" },
-            "彭珣禎": { name: "彭珣禎", dept: "台大 法律二", interests: [], ig: "", quote: "" },
-            "葉宣麟": { name: "葉宣麟", dept: "台大 法律一", interests: [], ig: "", quote: "" },
-            "耿筠渟": { name: "耿筠渟", dept: "商設三乙", interests: [], ig: "", quote: "" },
-            "張宸瑜": { name: "張宸瑜", dept: "台大 森林碩一", interests: [], ig: "", quote: "" },
-            "陳姵妤": { name: "陳姵妤", dept: "台大 藥學五", interests: [], ig: "", quote: "" },
-            "廖俞程": { name: "廖俞程", dept: "台大 法律系", interests: [], ig: "", quote: "" },
-            "周筠晰": { name: "周筠晰", dept: "台大 醫技二", interests: [], ig: "", quote: "" },
-            "邱榆鈞": { name: "邱榆鈞", dept: "台大 地理二", interests: [], ig: "", quote: "" },
-            "雷之語": { name: "雷之語", dept: "台大 國企四", interests: [], ig: "", quote: "" },
-            "王彰儀": { name: "王彰儀", dept: "台大 護理一", interests: [], ig: "", quote: "" },
-            "李柏霆": { name: "李柏霆", dept: "GT OMSCS碩一", interests: [], ig: "", quote: "" },
-            "梁學銘": { name: "梁學銘", dept: "師大 地理116", interests: [], ig: "", quote: "" },
-            "吳秉庭": { name: "吳秉庭", dept: "台大 地理二", interests: [], ig: "", quote: "" },
-            "蘇緯": { name: "蘇緯", dept: "航空警察局台北分局", interests: [], ig: "", quote: "" },
-            "陳思甯": { name: "陳思甯", dept: "台大 日文一", interests: [], ig: "", quote: "" },
-            "陳鄔子涵": { name: "陳鄔子涵", dept: "法律系", interests: [], ig: "", quote: "" },
-            "豆淮綸": { name: "豆淮綸", dept: "台大 戲劇四", interests: [], ig: "", quote: "" },
-            "陳君睿": { name: "陳君睿", dept: "台大 生工一", interests: [], ig: "", quote: "" },
-            "陳映筑": { name: "陳映筑", dept: "台大 法律二", interests: [], ig: "", quote: "" },
-            "龍耘心": { name: "龍耘心", dept: "台大 法律三", interests: [], ig: "", quote: "" },
-            "陳巧恩": { name: "陳巧恩", dept: "台大 政治二", interests: [], ig: "", quote: "" }
-        };
+        // 純名字名單庫
+        const membersList = [
+            "丁一", "王昀鍇", "吳一君", "彭珣禎", "葉宣麟", "耿筠渟", "張宸瑜", 
+            "陳姵妤", "廖俞程", "周筠晰", "邱榆鈞", "雷之語", "王彰儀", 
+            "李柏霆", "梁學銘", "吳秉庭", "蘇緯", "陳思甯", "陳鄔子涵", 
+            "豆淮綸", "陳君睿", "陳映筑", "龍耘心", "陳巧恩"
+        ];
 
-        // 自動生成網頁下拉選單
+        // 自動生成網頁下拉純名字選單
         window.onload = function() {
             const selector = document.getElementById('userSelector');
-            Object.keys(membersDatabase).sort().forEach(name => {
+            // 過濾並排序名字（移除非必要的 guest 預設）
+            membersList.filter(n => n !== "丁一").sort().forEach(name => {
                 const opt = document.createElement('option');
                 opt.value = name;
-                opt.innerHTML = `${name} (${membersDatabase[name].dept})`;
+                opt.innerHTML = name;
                 selector.appendChild(opt);
             });
-            updateMembersTable();
             resetScheduleToBlank();
         };
-
-        function updateMembersTable() {
-            const tbody = document.getElementById('membersListBody');
-            tbody.innerHTML = '';
-            Object.keys(membersDatabase).forEach(key => {
-                const m = membersDatabase[key];
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td><strong>${m.name}</strong></td>
-                    <td>${m.dept}</td>
-                    <td>${m.interests.length > 0 ? m.interests.map(i => `<span style="background:#e67e22; color:white; padding:2px 6px; border-radius:10px; font-size:0.8em; margin-right:4px;">#${i}</span>`).join('') : '<span style="color:#aaa;">自介待填</span>'}</td>
-                    <td><i style="color:#555;">${m.quote || '（等候表單收集後固化）'}</i></td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
 
         function switchView() {
             const currentSelected = document.getElementById('userSelector').value;
@@ -687,9 +609,8 @@
                 return;
             }
 
-            const user = membersDatabase[currentSelected];
-            statusText.innerText = `已鎖定社員視角：${user.name}`;
-            renderNewScheduleFormat(user.name);
+            statusText.innerText = `已鎖定社員視角：${currentSelected}`;
+            renderNewScheduleFormat(currentSelected);
         }
 
         function resetScheduleToBlank() {
