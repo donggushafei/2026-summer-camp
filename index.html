@@ -47,12 +47,6 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
         select {
             width: 100%;
             padding: 8px;
@@ -210,7 +204,6 @@
             text-decoration: none;
             word-break: break-all;
         }
-        .link-box a:hover { text-decoration: underline; }
         
         .instructor-badge {
             background-color: #d4edda;
@@ -241,6 +234,7 @@
         <p>集結最新出隊時程、個人化排班、完整課輔午休與洗澡資訊的數位基地</p>
     </header>
 
+    <!-- 社員選取與切換系統 -->
     <section class="system-section">
         <h2>👤 請選取你的名字切換專屬視角</h2>
         <p style="color:#666; font-size:0.9em; margin-bottom:10px;">切換後，點選下方「個人客製化排班查詢」即可一鍵顯示你在山上的所有專屬組別與值班資訊！</p>
@@ -253,11 +247,12 @@
         </div>
     </section>
 
+    <!-- 資訊方格主矩陣 -->
     <div class="grid-container">
         
         <div class="grid-card" onclick="openModal('modal-my-schedule')">
             <h3>👤 個人客製化排班查詢</h3>
-            <p>一鍵看懂自己每日的課輔負責、各教案帶隊組別、廚務清洗與個人洗澡順序。</p>
+            <p>【更新】一鍵查閱包含：個人去回程、洗澡時段順序、課輔、教案分組、音樂學堂及認領公用備品清單。</p>
         </div>
 
         <div class="grid-card" onclick="openModal('modal-timeline')">
@@ -272,12 +267,12 @@
 
         <div class="grid-card" onclick="openModal('modal-class-info')">
             <h3>🏫 完整課輔午休分組與核心須知</h3>
-            <p>內含12:40午休新規、隊輔四大責任、以及各年級隊輔分組名單預留區。</p>
+            <p>【大更新】已同步 6/14 籌備會敲定的二、三、四、五年級隊輔完整名單與教室配置圖。</p>
         </div>
 
         <div class="grid-card" onclick="openModal('modal-fieldwork')">
             <h3>🌾 文健站田野調查</h3>
-            <p>提供暑期筆記上傳與問題參考模板區、以及歷年田野調查筆記雙雲端連結。</p>
+            <p>【大更新】已發布田野調查現場敲定的 1~6 組完整隊員名單與布農歷史文史背景簡介。</p>
         </div>
 
         <div class="grid-card" onclick="openModal('modal-tips')">
@@ -287,7 +282,7 @@
 
         <div class="grid-card" onclick="openModal('modal-bath-schedule')">
             <h3>🚿 完整盥洗沐浴洗澡表</h3>
-            <p>集中查閱五、六、日三晚的完整浴室排班，每晚皆統一於 20:00 準時開洗。</p>
+            <p>【大更新】已同步現場填表登記完畢的五、六、日三天晚上 A~K 梯次完整雙浴室名單。</p>
         </div>
 
         <div class="grid-card" onclick="openModal('modal-accounting')">
@@ -297,11 +292,18 @@
 
     </div>
 
+    <!-- 1. 個人客製化排班 -->
     <div id="modal-my-schedule" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-my-schedule')">&times;</span>
             <h2 id="scheduleTitle">個人客製化排班排程</h2>
             <p style="color: #666; margin-bottom: 15px;">已切換為個人格式。以下為你的專屬資訊：</p>
+            
+            <div class="schedule-day" style="border-left-color: #9b59b6;">
+                <h4>🎒 籌備認領備品與個人行李清單</h4>
+                <div id="item-schedule-content"></div>
+            </div>
+
             <div class="schedule-day">
                 <h4>📅 禮拜五 (7/24)</h4>
                 <div id="fri-schedule-content"></div>
@@ -321,6 +323,7 @@
         </div>
     </div>
 
+    <!-- 3. 出隊總時程表 -->
     <div id="modal-timeline" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-timeline')">&times;</span>
@@ -330,10 +333,10 @@
                 <tr><th>時間</th><th>項目</th><th>說明</th></tr>
                 <tr><td>13:10-13:20</td><td>社員集合</td><td>在台中高鐵站集合 (去回程交通規範看報帳分頁)</td></tr>
                 <tr><td>13:30-15:00</td><td>前往雙龍國小</td><td>集體包車前往</td></tr>
-                <tr><td>15:00-16:30</td><td>7/25活動試跑</td><td>一組30分鐘 (暈染畫 ➡️ 傳聲筒 ➡️ 科普大地)。有簡報大概講一次，有活動帶大家做一次。確認活動流程、校對課輔小隊輔。</td></tr>
+                <tr><td>15:00-16:30</td><td>7/25活動試跑</td><td>一組30分鐘 (暈染畫 ➡️ 傳聲筒 ➡️ 科普大地)。確認活動流程、校對課輔小隊輔。</td></tr>
                 <tr><td>16:30-19:00</td><td>晚餐時間</td><td><strong>【16:30 煮飯組開始備料】</strong> 自己煮 (龍坊老闆娘提供食材)，有自我介紹環節。禮拜六教案組 + 幾個禮拜日洗碗的人負責。</td></tr>
                 <tr><td>19:00-20:00</td><td>7/26活動試跑</td><td>紙飛機 (7/26第一節課) 流程試跑與說明</td></tr>
-                <tr><td>20:00-21:00</td><td>輪流場佈與盥洗</td><td><strong>【20:00 準時開始洗澡】</strong> (洗之前記得@下一個人等)。還沒輪到洗澡的去下載簡報到圖書館、放教具、製作大/小朋友名牌雛形。</td></tr>
+                <tr><td>20:00-21:00</td><td>輪流場佈與盥洗</td><td><strong>【20:00 準時開始洗澡】</strong> (洗之前記得@下一個人等)。還沒輪到洗澡的去下載簡報、放教具、製作大/小朋友名牌雛形（需剪形狀、打洞機打洞、穿好線並標組別）。</td></tr>
                 <tr><td>21:00-</td><td>團體時間</td><td>先做完正事，再玩桌遊！</td></tr>
             </table>
             <h3>第二天 7/25 (六)</h3>
@@ -347,16 +350,16 @@
                 <tr><td>13:30-14:30</td><td>傳聲筒 (圖書館)</td><td>下午核心科普教案一</td></tr>
                 <tr><td>14:30-16:00</td><td>科普大地</td><td>下午核心科普教案二</td></tr>
                 <tr><td>16:00-16:30</td><td>小朋友放學</td><td>請小朋友回教室拿書包，穿堂集合放學，回收名牌</td></tr>
-                <tr><td>16:30-17:30</td><td>場復與備料</td><td><strong>【16:30 煮飯組開始準備晚餐】</strong> 其餘人負責收拾圖書館、收各課輔教室文具與桌遊。</td></tr>
+                <tr><td>16:30-17:30</td><td>場復與備料</td><td>當天不用煮飯的人負責收拾圖書館、收各課輔教室文具與桌遊；當天煮飯的人於16:30開始準備晚餐。</td></tr>
                 <tr><td>17:30-19:00</td><td>晚餐時間</td><td>自己煮 (龍坊老闆娘提供食材)，吃完晚餐收拾。</td></tr>
-                <tr><td>19:00-20:00</td><td>7/26活動試跑</td><td>一組30分鐘 (氣球車 ➡️ 運動會)。確認流程與隊輔分工。</td></tr>
+                <tr><td>19:00-20:00</td><td>7/26活動試跑</td><td>確認7/26活動流程、課輔與隊輔分工，各組試跑。</td></tr>
                 <tr><td>20:00-</td><td>輪流場佈與盥洗</td><td><strong>【20:00 準時開始洗澡】</strong>。不盥洗時段去下載簡報、放教具、補做名牌或進行運動會場勘。</td></tr>
             </table>
             <h3>第三天 7/26 (日)</h3>
             <table>
                 <tr><th>時間</th><th>項目</th><th>說明</th></tr>
                 <tr><td>09:20前</td><td>準備</td><td>9:20前到圖書館準備完閉</td></tr>
-                <tr><td>09:30-10:50</td><td>布農音樂小學堂</td><td>小朋友教我們唱歌，可能會請主任或實習老師來評分</td></tr>
+                <tr><td>09:30-10:50</td><td>布農音樂小學堂</td><td>小朋友教我們唱歌（學拍手歌），可能會請主任或實習老師來評分</td></tr>
                 <tr><td>11:00-12:00</td><td>紙飛機 (圖書館)</td><td>核心科普課三</td></tr>
                 <tr><td>12:00-13:30</td><td>午餐、午休</td><td>吃飯可以看影片至12:40 (12:40分界線)</td></tr>
                 <tr><td>13:30-14:30</td><td>氣球車 (圖書館)</td><td>核心科普課四</td></tr>
@@ -370,250 +373,271 @@
             <h3>第四天 7/27 (一)</h3>
             <table>
                 <tr><th>時間</th><th>項目</th><th>說明</th></tr>
-                <tr><td rowspan="2">待定<br>(文健站接洽中)</td><td>盥洗、早餐</td><td>● 自由時間：想去瀑布可自己去</td></tr>
+                <tr><td rowspan="2">待定</td><td>盥洗、早餐</td><td>● 自由時間：想去瀑布可自己去</td></tr>
                 <td>場復、收拾行李</td><td>集合行李、還睡袋、關冷氣</td></tr>
                 <tr><td>（續上）</td><td>田野調查</td><td>● 預計文健站</td></tr>
                 <tr><td>11:30-12:20</td><td>午餐</td><td>學校旁邊麵店</td></tr>
-                <tr><td>12:25-16:30</td><td>部落闖關解謎</td><td>
-                    ● <strong>部落燒腦闖關賽 (期待🤩)</strong><br>
-                    ● 闖關活動支援每個人 50 塊 (可互借)<br>
-                    ● 買東西要打統編
-                </td></tr>
-                <tr><td>17:00-</td><td>賦歸</td><td><strong>【17:00 準時賦歸包車】</strong> 預計 19:30 抵達台中高鐵站。</td></tr>
+                <tr><td>12:25-16:30</td><td>部落闖關解謎</td><td>● <strong>部落燒腦闖關賽 (期待🤩)</strong>，大會支援每人50元，買東西打統編。</td></tr>
+                <tr><td>17:00-</td><td>賦歸</td><td>包車返回台中高鐵站（預計19:30抵達）</td></tr>
             </table>
-            <div class="danger-box">
-                🍱 <strong>與食物有關的四大提醒：</strong>
-                <ul>
-                    <li>1. <strong>必須自己攜帶 7/25、7/26、7/27 這三天的早餐！</strong></li>
-                    <li>2. 7/24 禮拜五在高鐵集合前，請<strong>先自己吃完午餐</strong>。</li>
-                    <li>3. 7/27 禮拜一回程<strong>大會沒有補助晚餐</strong>。</li>
-                    <li>4. 建議<strong>自己多帶宵夜</strong>上山。</li>
-                </ul>
-            </div>
         </div>
     </div>
 
+    <!-- 4. 廚務分組 -->
     <div id="modal-kitchen" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-kitchen')">&times;</span>
             <h2>🍳 廚務煮飯洗碗組別公佈</h2>
             <div style="margin-bottom: 20px;">
                 <h3>📅 禮拜五晚飯 (7/24)</h3>
-                <p><strong>🔥 負責煮飯 (16:30開始)：</strong>吳秉庭、王彰儀、陳姵妤、蘇緯、龍耘心</p>
-                <p><strong>🧼 收拾洗碗：</strong>豆淮綸、李柏霆、陳思甯</p>
+                <p><strong>🔥 負責煮飯 (16:30開始)：</strong>吳秉庭、王彰儀、陳姵妤、蘇緯、龍耘心、葉宣麟</p>
+                <p><strong>🧼 收拾洗碗：</strong>豆淮綸、李柏霆、陳思甯、耿筠渟</p>
             </div>
             <div>
                 <h3>📅 禮拜六晚飯 (7/25)</h3>
-                <p><strong>🔥 負責煮飯 (16:30開始)：</strong>梁學銘、邱榆鈞、周筠晰、雷之語</p>
+                <p><strong>🔥 負責煮飯 (16:30開始)：</strong>梁學銘、邱榆鈞、周筠晰、雷之語、陳鄔子涵</p>
                 <p><strong>🧼 收拾洗碗：</strong>陳巧恩、陳映筑、張宸瑜、廖俞程</p>
             </div>
             <div class="highlight-box">
-                💡 <strong>組員備忘：</strong>還有葉宣麟、耿筠渟、陳鄔子涵等同學待排。煮好絕對不能說難吃喔！
+                💡 <strong>分配原則：</strong>禮拜六白天有負責主課教案上課的人，晚上就不用煮飯洗碗避免太累！
             </div>
         </div>
     </div>
 
+    <!-- 5. 完整課輔午休分組與說明 -->
     <div id="modal-class-info" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-class-info')">&times;</span>
-            <h2>🏫 完整課輔午休分組與核心須知</h2>
+            <h2>🏫 完整課輔午休與大會配置圖</h2>
 
             <div class="info-sub-section">
-                <h4>👥 課輔年級隊輔分組表 (預留空位)</h4>
-                <p style="color:#666; font-size:0.9em; margin-bottom:5px;">備註：幹部吳一君、王昀鍇、彭珣禎以及兩位攝影同學預設先不填入年級名單。</p>
+                <h4>🏫 雙龍國小教室與位置分配圖</h4>
                 <table>
-                    <tr><th>年級</th><th>課輔負責隊輔名單</th><th>小朋友名單</th></tr>
-                    <tr><td><strong>二年級</strong> (5人)</td><td>⏳ 欄位待定 (現場排定)</td><td>⏳ 待更新</td></tr>
-                    <tr><td><strong>三年級</strong> (5人)</td><td>⏳ 欄位待定 (現場排定)</td><td>⏳ 待更新</td></tr>
-                    <tr><td><strong>四年級</strong> (4人)</td><td>⏳ 欄位待定 (現場排定)</td><td>⏳ 待更新</td></tr>
-                    <tr><td><strong>五年級</strong> (3人)</td><td>⏳ 欄位待定 (現場排定)</td><td>⏳ 待更新</td></tr>
+                    <tr><th>樓層</th><th>左側配置</th><th>樓梯間</th><th>右側配置</th></tr>
+                    <tr><td><strong>三樓</strong></td><td>四樓級教室</td><td>⚠️ 樓梯</td><td>五年級教室 / 圖書館</td></tr>
+                    <tr><td><strong>二樓</strong></td><td>三年級教室</td><td>⚠️ 樓梯</td><td>(無配置/空格)</td></tr>
+                    <tr><td><strong>一樓</strong></td><td>六年級教室</td><td>🚪 穿堂</td><td>(找主任室)</td></tr>
                 </table>
+                <p style="font-size:0.85em; color:#e67e22; margin-top:5px;">※ 註：二年級教室在一樓往廁所方向走的第二棟。</p>
             </div>
 
             <div class="info-sub-section">
-                <h4>⏰ 12:40 午休核心新規</h4>
-                <p>午餐全體於各班教室用餐，吃飯可以看影片至 12:40。<strong>12:40 是吃飯與午休的嚴格分界線！</strong> 之後全社只開放以下兩個選項引導學生：</p>
-                <ul>
-                    <li>▶ <strong>想睡午覺者</strong>：一律留在原教室內。</li>
-                    <li>▶ <strong>想看影片者</strong>：統一帶到 3 樓圖書館觀看。</li>
-                </ul>
-            </div>
-
-            <div class="info-sub-section">
-                <h4>🚨 課輔午休四大隊輔責任備忘</h4>
-                <ul>
-                    <li>1. <strong>最大核心目標</strong>：確保所有學生人身安全、時時刻刻在視線範圍內！</li>
-                    <li>2. 小朋友不論是去上廁所、裝水還是倒垃圾，<strong>必須要有一個隊輔全程陪同</strong>。</li>
-                    <li>3. 隊輔因故需要暫時離開崗位，請務必先告知同夥隊輔夥伴。</li>
-                    <li>4. <strong>隊輔切勿擅自消失、或在午休以外時間睡覺、滑手機</strong>，否則會造成夥伴極大困擾！</li>
-                </ul>
+                <h4>👥 課輔午休年級隊輔敲定名單</h4>
+                <p style="color:#666; font-size:0.9em; margin-bottom:5px;">幹部吳一君、王昀鍇、彭珣禎以及兩位攝影預設先不列入年級固定名單。</p>
+                <table>
+                    <tr><th>年級</th><th>課輔負責人名單</th></tr>
+                    <tr><td><strong>二年級 (5人)</strong></td><td>李柏霆、龍耘心、王彰儀、蘇緯、廖俞程</td></tr>
+                    <tr><td><strong>三年級 (5人)</strong></td><td>陳思甯、雷之語、邱榆鈞、陳鄔子涵、周筠晰</td></tr>
+                    <tr><td><strong>四年級 (4人)</strong></td><td>陳映筑、陳巧恩、葉宜麟、豆淮綸</td></tr>
+                    <tr><td><strong>五年級 (3人)</strong></td><td>張宸瑜、耿筠渟、陳姵妤</td></tr>
+                </table>
             </div>
         </div>
     </div>
 
+    <!-- 6. 文健站田野調查 -->
     <div id="modal-fieldwork" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-fieldwork')">&times;</span>
-            <h2>🌾 文健站田野調查雲端專區</h2>
-            <p style="color:#555; margin-bottom:15px;">請多加利用以下官方共編雲端資料庫：</p>
-
-            <div class="link-box">
-                📂 <strong>1. 暑期出隊筆記區＋模板＋問題庫參考</strong><br>
-                <p style="font-size:0.9em; color:#555; margin-bottom:5px;">包含開頭結尾標準模板、文健站探訪對接格式、精選對話問題在庫：</p>
-                <a href="https://drive.google.com/drive/u/0/folders/1Ry3NsdhmowIvcWHcn96jN3e-XfIH5Ww-" target="_blank">https://drive.google.com/drive/u/0/folders/1Ry3NsdhmowIvcWHcn96jN3e-XfIH5Ww-</a>
-            </div>
-
-            <div class="link-box">
-                📂 <strong>2. 歷年田野調查與學長姐筆記參考庫</strong><br>
-                <p style="font-size:0.9em; color:#555; margin-bottom:5px;">收錄過去歷屆上山累積的田調精華與部落對接紀錄：</p>
-                <a href="https://drive.google.com/drive/u/0/folders/11H5M5c7yglwxEN7qMU8IAydj94BZTlzl" target="_blank">https://drive.google.com/drive/u/0/folders/11H5M5c7yglwxEN7qMU8IAydj94BZTlzl</a>
+            <h2>🌾 文健站田野調查現場分組名單</h2>
+            <table>
+                <tr><th>組別</th><th>訪談人 1</th><th>訪談人 2</th><th>記錄人</th><th>協作隊員</th></tr>
+                <tr><td><strong>第 1 組</strong></td><td>王彰儀</td><td>梁學銘</td><td>邱榆鈞</td><td>-</td></tr>
+                <tr><td><strong>第 2 組</strong></td><td>耿筠渟</td><td>李柏霆</td><td>陳思甯</td><td>-</td></tr>
+                <tr><td><strong>第 3 組</strong></td><td>豆淮綸</td><td>吳秉庭</td><td>張宸瑜</td><td>-</td></tr>
+                <tr><td><strong>第 4 組</strong></td><td>龍耘心</td><td>蘇緯</td><td>雷之語</td><td>廖俞程</td></tr>
+                <tr><td><strong>第 5 組</strong></td><td>葉宣麟</td><td>陳映筑</td><td>陳巧恩</td><td>-</td></tr>
+                <tr><td><strong>第 6 組</strong></td><td>陳姵妤</td><td>陳鄔子涵</td><td>周筠晰</td><td>-</td></tr>
+            </table>
+            <div class="info-sub-section">
+                <h4>💡 布農族常識與歷史脈絡備忘</h4>
+                <p><strong>三大社群分佈：</strong>雙龍村內主要為卡社群（居部落最上方）、丹社群（居部落中間）、巒社群（居部落下方），主要因語言及溝通便利聚集。</p>
+                <p>夢兆（牙齒掉落、房子倒塌）、噴嚏與放屁（出獵大惡兆）、鳥占（繡眼畫眉在左側鳴叫為凶）皆為山林禁忌。</p>
             </div>
         </div>
     </div>
 
+    <!-- 7. 教學技巧與前車之鑑 -->
     <div id="modal-tips" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-tips')">&times;</span>
             <h2>💡 教學技巧與前車之鑑</h2>
-            
-            <div class="link-box" style="background-color: #d4edda; border-color: #c3e6cb;">
-                🔥 <strong>TFT 帶小孩技巧乾貨（超實用！！！強烈建議閱讀）：</strong><br>
-                <p style="font-size:0.95em; color:#155724; margin-bottom:8px;">出隊必讀神級指南！點擊下方官方雲端直接閱讀：</p>
-                <a href="https://drive.google.com/file/d/1bF9X0bd6PQY3yx0fPh4VO_W7Tjo67v8q/view" target="_blank" style="color: #155724; text-decoration: underline; font-size:1.1em;">👉 點此開啟 TFT 帶領技巧乾貨 PDF 檔案</a>
+            <div class="link-box">
+                🔥 <a href="https://drive.google.com/file/d/1bF9X0bd6PQY3yx0fPh4VO_W7Tjo67v8q/view" target="_blank">👉 點此開啟 TFT 帶領技巧乾貨 PDF 檔案</a>
             </div>
-
-            <h3>📢 秩序管理與默契口號</h3>
+            <h3>🚨 秩序口號與守則</h3>
             <ul>
-                <li><strong>常用口號</strong>：「小嘴巴，閉起來」、「注意！注意！」。可用氣音、摸鼻子或摸耳朵引導小朋友。</li>
-                <li><strong>引導技巧</strong>：點人回答問題要公平。約法三章「只點坐著且安靜的同學」，或偷偷給予暗示。</li>
-                <li><strong>點點機制</strong>：一律使用點點換獎品，並且實施「人人有獎」，平衡小朋友的得失心。</li>
-            </ul>
-            <br>
-            <h3>⚠️ 混齡教學大限制</h3>
-            <p>我們帶的是 1 到 6 年級混齡分組。教案設計必須包含「簡單易懂的低年級內容」加上「高年級不覺得無聊的進階挑戰」，防止遊戲太難導致低年級完全無參與感、被高年級嫌棄拖累組別。</p>
-            <br>
-            <h3>🛑 出隊生活雷點與檢討備忘</h3>
-            <ul>
-                <li>嚴禁在小朋友面前罵髒話、圖書館內絕對不能吃 any 東西。</li>
-                <li>帶隊隊輔要負起人身安全責任，<strong>去廁所或丟垃圾必須告知夥伴，嚴禁擅自滑手機、睡覺或消失</strong>！</li>
+                <li>常用口號：「小嘴巴，閉起來」、「注意！注意！」。</li>
+                <li>混齡大限制：帶 1~6 年級，遊戲太難會讓低年級沒參與感、高年級嫌棄，教案一定要做好混齡難度配套！</li>
             </ul>
         </div>
     </div>
 
+    <!-- 8. 完整盥洗沐浴洗澡表 -->
     <div id="modal-bath-schedule" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-bath-schedule')">&times;</span>
-            <h2>🚿 完整出隊盥洗沐浴洗澡順序表</h2>
-            <div class="highlight-box">
-                ⚠️ <strong>洗澡生活公約</strong>：開始洗澡的時間只是大概估算，<strong>最重要的是「順序」</strong>！請大家務必在進去洗「之前」，就先在群組 **@標記下一個人** 來浴室外準備等待，避免空窗浪費時間。
-            </div>
+            <h2> Shower 浴室排班大老二（A~K 梯次完全敲定）</h2>
+            <p style="color:#e67e22; font-size:0.9em; margin-bottom:10px;">⚠️ 洗澡前請務必在 LINE 群組 @標記下一個人來等浴室，避免時間空窗！</p>
             
             <div class="bath-table-container">
                 <div>
-                    <h3 style="color:var(--accent-color);">📅 禮拜五晚上 (20:00開洗)</h3>
+                    <h4>📅 禮拜五晚上</h4>
                     <table>
                         <tr><th>時段</th><th>浴室 1</th><th>浴室 2</th></tr>
-                        <tr><td>A (20:00)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>B (20:15)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>C (20:30)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>D (20:45)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>E (21:00)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
+                        <tr><td>A (20:00)</td><td>張宸瑜</td><td>龍耘心</td></tr>
+                        <tr><td>B (20:15)</td><td>葉宜麟</td><td>邱榆鈞</td></tr>
+                        <tr><td>C (20:30)</td><td>蘇緯</td><td>陳巧恩</td></tr>
+                        <tr><td>D (20:45)</td><td>豆淮綸</td><td>王彰儀</td></tr>
+                        <tr><td>E (21:00)</td><td>陳思甯</td><td>陳映筑</td></tr>
+                        <tr><td>F (21:15)</td><td>吳秉庭</td><td>彭珣禎</td></tr>
+                        <tr><td>G (21:30)</td><td>雷之語</td><td>王昀鍇</td></tr>
+                        <tr><td>H (21:45)</td><td>陳鄔子涵</td><td>周筠晰</td></tr>
+                        <tr><td>I (22:00)</td><td>李柏霆</td><td>廖俞程</td></tr>
+                        <tr><td>J (22:15)</td><td>耿筠渟</td><td>陳姵妤</td></tr>
+                        <tr><td>K (22:30)</td><td>梁學銘</td><td>吳一君</td></tr>
                     </table>
                 </div>
 
                 <div>
-                    <h3 style="color:var(--accent-color);">📅 禮拜六晚上 (20:00開洗)</h3>
+                    <h4>📅 禮拜六晚上</h4>
                     <table>
                         <tr><th>時段</th><th>浴室 1</th><th>浴室 2</th></tr>
-                        <tr><td>A (20:00)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>B (20:15)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>C (20:30)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>D (20:45)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>E (21:00)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
+                        <tr><td>A (20:00)</td><td>陳巧恩</td><td>陳姵妤</td></tr>
+                        <tr><td>B (20:15)</td><td>陳鄔子涵</td><td>雷之語</td></tr>
+                        <tr><td>C (20:30)</td><td>吳秉庭</td><td>王彰儀</td></tr>
+                        <tr><td>D (20:45)</td><td>李柏霆</td><td>蘇緯</td></tr>
+                        <tr><td>E (21:00)</td><td>張宸瑜</td><td>邱榆鈞</td></tr>
+                        <tr><td>F (21:15)</td><td>龍耘心</td><td>陳映筑</td></tr>
+                        <tr><td>G (21:30)</td><td>陳思甯</td><td>葉宜麟</td></tr>
+                        <tr><td>H (21:45)</td><td>周筠晰</td><td>彭珣禎</td></tr>
+                        <tr><td>I (22:00)</td><td>耿筠渟</td><td>廖俞程</td></tr>
+                        <tr><td>J (22:15)</td><td>豆淮綸</td><td>梁學銘</td></tr>
+                        <tr><td>K (22:30)</td><td>王昀鍇</td><td>吳一君</td></tr>
                     </table>
                 </div>
 
                 <div>
-                    <h3 style="color:var(--accent-color);">📅 禮拜天晚上 (20:00開洗)</h3>
+                    <h4>📅 禮拜天晚上</h4>
                     <table>
                         <tr><th>時段</th><th>浴室 1</th><th>浴室 2</th></tr>
-                        <tr><td>A (20:00)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>B (20:15)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>C (20:30)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>D (20:45)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
-                        <tr><td>E (21:00)</td><td>⏳ 待填</td><td>⏳ 待填</td></tr>
+                        <tr><td>A (20:00)</td><td>豆淮綸</td><td>梁學銘</td></tr>
+                        <tr><td>B (20:15)</td><td>陳巧恩</td><td>王昀鍇</td></tr>
+                        <tr><td>C (20:30)</td><td>張宸瑜</td><td>龍耘心</td></tr>
+                        <tr><td>D (20:45)</td><td>葉宣麟</td><td>王彰儀</td></tr>
+                        <tr><td>E (21:00)</td><td>蘇緯</td><td>陳映筑</td></tr>
+                        <tr><td>F (21:15)</td><td>周筠晰</td><td>邱榆鈞</td></tr>
+                        <tr><td>G (21:30)</td><td>陳鄔子涵</td><td>陳思甯</td></tr>
+                        <tr><td>H (21:45)</td><td>李柏霆</td><td>彭珣禎</td></tr>
+                        <tr><td>I (22:00)</td><td>吳秉庭</td><td>耿筠渟</td></tr>
+                        <tr><td>J (22:15)</td><td>雷之語</td><td>廖俞程</td></tr>
+                        <tr><td>K (22:30)</td><td>-</td><td>吳一君</td></tr>
                     </table>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- 9. 交通報帳說明 -->
     <div id="modal-accounting" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-accounting')">&times;</span>
             <h2>💰 交通補助與報帳核心規範</h2>
-            
-            <div class="danger-box" style="margin-top:0;">
-                📌 <strong>【最貴一筆車資】補貼原則：</strong><br>
-                大會每趟「去程」或「回程」中，<strong>只會補貼其中【1 筆最貴的交通工具費用】</strong>。例如：搭高鐵/火車後轉搭公車捷運、或搭火車後轉搭區間車，<strong>後續的短途轉乘一律不補助</strong>。
+            <div class="danger-box">
+                📌 <strong>【最貴一筆車資】補貼原則：</strong> 大會每趟行程中，只會補貼其中【1 筆最貴的交通工具費用】，後續的短途轉乘捷運公車一律不補助。
             </div>
-
-            <div class="info-sub-section">
-                <h4>一、7/24 (五) 去程規範 (13:10 台中高鐵站集合)</h4>
-                <p style="margin-bottom:8px;"><strong>1. 🚄 台北高鐵大會統訂組 (大會集體訂票)：</strong></p>
-                <p style="background:#fff; padding:6px; border-radius:4px; font-size:0.9em; margin-bottom:10px; border-left:3px solid #2ecc71;">
-                    雷之語、吳秉庭、豆淮綸、龍耘心、李柏霆、張宸瑜、周筠晰、陳思甯、蘇緯、耿筠渟、陳姵妤、廖俞程、陳巧恩<br>
-                    <span style="color:#e67e22; font-size:0.9em;">※ 注意：以上夥伴大會將統一訂票，若要改搭別的務必事先通知幹部！</span>
-                </p>
-                <p style="margin-bottom:5px;"><strong>2. 🚂 自行前往/其他交通組：</strong></p>
-                <ul>
-                    <li>● <strong>台中在地人 (不搭車)：</strong>王彰儀、陳鄔子涵、陳映筑</li>
-                    <li>● <strong>搭乘火車組：</strong>葉宣麟、吳秉庭</li>
-                </ul>
-            </div>
-
-            <div class="info-sub-section">
-                <h4>二、7/27 (一) 回程規範 (約 17:00 雙龍出發 ➡️ 19:30 抵達台中高鐵)</h4>
-                <p style="margin-bottom:8px;"><strong>1. 🚄 台北高鐵回程集體訂票組：</strong></p>
-                <p style="background:#fff; padding:6px; border-radius:4px; font-size:0.9em; margin-bottom:10px; border-left:3px solid #2ecc71;">
-                    雷之語、豆淮綸、龍耘心、李柏霆、張宸瑜、周筠晰、陳思甯、蘇緯、耿筠渟、廖俞程<br>
-                    <span style="color:#e67e22; font-size:0.9em;">※ 注意：以上夥伴回程大會統一訂票，若更改請提前告知幹部！</span>
-                </p>
-                <p style="margin-bottom:5px;"><strong>2. 🚗 自行離開/解散組：</strong></p>
-                <p style="background:#fff; padding:6px; border-radius:4px; font-size:0.9em; border-left:3px solid #7f8c8d;">
-                    王彰儀、陳鄔子涵、陳映筑、陳巧恩、陳姵妤、吳秉庭
-                </p>
-            </div>
-
-            <div class="info-sub-section">
-                <h4>📝 火車客運報帳憑證細節與禁忌</h4>
-                <ul>
-                    <li>ℹ️ <strong>火車報帳：</strong>必須提供 <b>a. 實體車票原件</b> 或 <b>b. 網路購票證明(須輸入大會統編)</b>，細節請上網查詢。</li>
-                    <li>ℹ️ <strong>客運公車報帳：</strong>請自行查詢列印憑證，**一定要可以輸入並列印大會統編**，否則完全無法報帳。</li>
-                    <li>❌ <strong>絕對不接受補助：</strong>計程車、Uber 等衍生費用大會一律不予補助。</li>
-                    <li>🏢 <strong>大會官方統編：</strong><code>92365673</code></li>
-                </ul>
-            </div>
-
-            <div class="link-box" style="background-color: #eaf2f8;">
-                🔗 <strong>1. 填寫出隊「交通方式意願調查」表單</strong><br>
-                <a href="https://forms.gle/Mu4w6J9WLvvPU9hR7" target="_blank">https://forms.gle/Mu4w6J9WLvvPU9hR7</a>
-            </div>
-
-            <div class="link-box" style="background-color: #eaf2f8;">
-                🔗 <strong>2. 實體車票與購票證明「交通報帳」表單</strong><br>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4x3mdAppdhKl2RH_hdGjggiJbM812VTvTConPVW-Ddnp1Ow/viewform" target="_blank">https://docs.google.com/forms/d/e/1FAIpQLSf4x3mdAppdhKl2RH_hdGjggiJbM812VTvTConPVW-Ddnp1Ow/viewform</a>
-            </div>
+            <p>🏢 大會官方統編：<code>92365673</code></p>
         </div>
     </div>
 
     <script>
+        // 23人全體名單
         const membersList = [
             "王昀鍇", "吳一君", "彭珣禎", "葉宣麟", "耿筠渟", "張宸瑜", 
             "陳姵妤", "廖俞程", "周筠晰", "邱榆鈞", "雷之語", "王彰儀", 
             "李柏霆", "梁學銘", "吳秉庭", "蘇緯", "陳思甯", "陳鄔子涵", 
-            "豆淮綸", "陳君睿", "陳映筑", "龍耘心", "陳巧恩"
+            "豆淮綸", "陳映筑", "龍耘心", "陳巧恩", "葉宜麟"
         ];
+
+        // 核心教案分配庫庫
+        const courseGroups = {
+            "暈染畫": [
+                { id: 1, host: "梁學銘", staff: ["彭珣禎", "邱榆鈞"] },
+                { id: 2, host: "陳思甯", staff: ["陳映筑", "蘇緯"] },
+                { id: 3, host: "王彰儀", staff: ["吳一君", "陳姵妤"] },
+                { id: 4, host: "雷之語", staff: ["李柏霆", "豆淮綸"] },
+                { id: 5, host: "張宸瑜", staff: ["周筠晰", "葉宣麟"] },
+                { id: 6, host: "耿筠渟", staff: ["陳巧恩", "陳鄔子涵", "廖俞程", "龍耘心", "吳秉庭"] }
+            ],
+            "傳聲筒": [
+                { id: 1, host: "雷之語", staff: ["彭珣禎", "邱榆鈞"] },
+                { id: 2, host: "張宸瑜", staff: ["陳映筑", "蘇緯"] },
+                { id: 3, host: "耿筠渟", staff: ["吳一君", "陳姵妤"] },
+                { id: 4, host: "梁學銘", staff: ["李柏霆", "豆淮綸"] },
+                { id: 5, host: "陳思甯", staff: ["周筠晰", "葉宣麟"] },
+                { id: 6, host: "王彰儀", staff: ["陳巧恩", "陳鄔子涵", "廖俞程", "龍耘心", "吳秉庭"] }
+            ],
+            "大地": [
+                { id: 1, host: "張宸瑜", staff: ["彭珣禎", "邱榆鈞"] },
+                { id: 2, host: "耿筠渟", staff: ["陳映筑", "蘇緯"] },
+                { id: 3, host: "梁學銘", staff: ["吳一君", "陳姵妤"] },
+                { id: 4, host: "陳思甯", staff: ["李柏霆", "豆淮綸"] },
+                { id: 5, host: "王彰儀", staff: ["周筠晰", "葉宣麟"] },
+                { id: 6, host: "雷之語", staff: ["陳巧恩", "陳鄔子涵", "廖俞程", "龍耘心", "吳秉庭"] }
+            ],
+            "紙飛機": [
+                { id: 1, host: "陳思甯", staff: ["彭珣禎", "邱榆鈞"] },
+                { id: 2, host: "王彰儀", staff: ["陳映筑", "蘇緯"] },
+                { id: 3, host: "雷之語", staff: ["吳一君", "陳姵妤"] },
+                { id: 4, host: "張宸瑜", staff: ["李柏霆", "豆淮綸"] },
+                { id: 5, host: "耿筠渟", staff: ["周筠晰", "葉宣麟"] },
+                { id: 6, host: "梁學銘", staff: ["陳巧恩", "陳鄔子涵", "廖俞程", "龍耘心", "吳秉庭"] }
+            ],
+            "氣球車": [
+                { id: 1, host: "王彰儀", staff: ["彭珣禎", "邱榆鈞"] },
+                { id: 2, host: "雷之語", staff: ["陳映筑", "蘇緯"] },
+                { id: 3, host: "張宸瑜", staff: ["吳一君", "陳姵妤"] },
+                { id: 4, host: "耿筠渟", staff: ["李柏霆", "豆淮綸"] },
+                { id: 5, host: "梁學銘", staff: ["周筠晰", "葉宣麟"] },
+                { id: 6, host: "陳思甯", staff: ["陳巧恩", "陳鄔子涵", "廖俞程", "龍耘心", "吳秉庭"] }
+            ],
+            "運動會": [
+                { id: 1, host: "耿筠渟", staff: ["彭珣禎", "邱榆鈞"] },
+                { id: 2, host: "梁學銘", staff: ["陳映筑", "蘇緯"] },
+                { id: 3, host: "陳思甯", staff: ["吳一君", "陳姵妤"] },
+                { id: 4, host: "王彰儀", staff: ["李柏霆", "豆淮綸"] },
+                { id: 5, host: "雷之語", staff: ["周筠晰", "葉宣麟"] },
+                { id: 6, host: "張宸瑜", staff: ["陳巧恩", "陳鄔子涵", "廖俞程", "龍耘心", "吳秉庭"] }
+            ]
+        };
+
+        // 洗澡表名單對照庫
+        const bathData = {
+            "禮拜五": [
+                {t:"A (20:00)", b1:"張宸瑜", b2:"龍耘心"}, {t:"B (20:15)", b1:"葉宜麟", b2:"邱榆鈞"},
+                {t:"C (20:30)", b1:"蘇緯", b2:"陳巧恩"}, {t:"D (20:45)", b1:"豆淮綸", b2:"王彰儀"},
+                {t:"E (21:00)", b1:"陳思甯", b2:"陳映筑"}, {t:"F (21:15)", b1:"吳秉庭", b2:"彭珣禎"},
+                {t:"G (21:30)", b1:"雷之語", b2:"王昀鍇"}, {t:"H (21:45)", b1:"陳鄔子涵", b2:"周筠晰"},
+                {t:"I (22:00)", b1:"李柏霆", b2:"廖俞程"}, {t:"J (22:15)", b1:"耿筠渟", b2:"陳姵妤"},
+                {t:"K (22:30)", b1:"梁學銘", b2:"吳一君"}
+            ],
+            "禮拜六": [
+                {t:"A (20:00)", b1:"陳巧恩", b2:"陳姵妤"}, {t:"B (20:15)", b1:"陳鄔子涵", b2:"雷之語"},
+                {t:"C (20:30)", b1:"吳秉庭", b2:"王彰儀"}, {t:"D (20:45)", b1:"李柏霆", b2:"蘇緯"},
+                {t:"E (21:00)", b1:"張宸瑜", b2:"邱榆鈞"}, {t:"F (21:15)", b1:"龍耘心", b2:"陳映筑"},
+                {t:"G (21:30)", b1:"陳思甯", b2:"葉宜麟"}, {t:"H (21:45)", b1:"周筠晰", b2:"彭珣禎"},
+                {t:"I (22:00)", b1:"耿筠渟", b2:"廖俞程"}, {t:"J (22:15)", b1:"豆淮綸", b2:"梁學銘"},
+                {t:"K (22:30)", b1:"王昀鍇", b2:"吳一君"}
+            ],
+            "禮拜天": [
+                {t:"A (20:00)", b1:"豆淮綸", b2:"梁學銘"}, {t:"B (20:15)", b1:"陳巧恩", b2:"王昀鍇"},
+                {t:"C (20:30)", b1:"張宸瑜", b2:"龍耘心"}, {t:"D (20:45)", b1:"葉宣麟", b2:"王彰儀"},
+                {t:"E (21:00)", b1:"蘇緯", b2:"陳映筑"}, {t:"F (21:15)", b1:"周筠晰", b2:"邱榆鈞"},
+                {t:"G (21:30)", b1:"陳鄔子涵", b2:"陳思甯"}, {t:"H (21:45)", b1:"李柏霆", b2:"彭珣禎"},
+                {t:"I (22:00)", b1:"吳秉庭", b2:"耿筠渟"}, {t:"J (22:15)", b1:"雷之語", b2:"廖俞程"},
+                {t:"K (22:30)", b1:"-", b2:"吳一君"}
+            ]
+        };
 
         window.onload = function() {
             const selector = document.getElementById('userSelector');
@@ -629,125 +653,200 @@
         function switchView() {
             const currentSelected = document.getElementById('userSelector').value;
             const statusText = document.getElementById('currentStatusText');
-            
             if(currentSelected === 'guest') {
                 statusText.innerText = "一般訪客模式";
                 resetScheduleToBlank();
                 return;
             }
-
             statusText.innerText = `已鎖定社員視角：${currentSelected}`;
             renderNewScheduleFormat(currentSelected);
         }
 
         function resetScheduleToBlank() {
             const msg = "<span style='color:#999;'>訪客模式僅顯示通則。請在上方下拉選單選擇自己的名字以啟用個人客製化查詢。</span>";
+            document.getElementById('item-schedule-content').innerHTML = msg;
             document.getElementById('fri-schedule-content').innerHTML = msg;
             document.getElementById('sat-schedule-content').innerHTML = msg;
             document.getElementById('sun-schedule-content').innerHTML = msg;
             document.getElementById('mon-schedule-content').innerHTML = msg;
         }
 
+        // 輔助尋找教案組別的函式
+        function getCourseInfo(courseName, name) {
+            const groups = courseGroups[courseName];
+            for (let g of groups) {
+                if (g.host === name) {
+                    return `🌟 <span class='instructor-badge'>【主要教學講師】</span> 負責帶領第 <b>${g.id} 組</b> (組員夥伴：${g.staff.join('、')})`;
+                }
+                if (g.staff.includes(name)) {
+                    return `👥 負責 <b>第 ${g.id} 組</b> 協助帶隊 (主課講師：<b>${g.host}</b> ｜ 其他夥伴：${g.staff.filter(x=>x!==name).join('、') || '無'})`;
+                }
+            }
+            return "ℹ️ 本堂課你為【大隊機動/排休支援】。";
+        }
+
+        // 輔助尋找個人洗澡順序
+        function getBathInfo(dayKey, name) {
+            const list = bathData[dayKey];
+            for (let b of list) {
+                if (b.b1 === name) return `🛁 <b>${b.t}</b> 在 <b>【浴室 1】</b> 洗澡。`;
+                if (b.b2 === name) return `🛁 <b>${b.t}</b> 在 <b>【浴室 2】</b> 洗澡。`;
+            }
+            return "⏳ 今日名單無安排或採自由補洗機制。";
+        }
+
         function renderNewScheduleFormat(name) {
-            let friTransportGroup = "ℹ️ 你未在高鐵台北集體訂票名單中。若是搭火車客運請記得打統編或留實體票根報帳，轉乘短途不補助。";
+            // A. 個人物品與備品分配篩選
+            let myPersonalItems = [];
+            if (["彭珣禎", "葉宣麟", "李柏霆", "雷之語"].includes(name)) myPersonalItems.push("💨 <b>吹風機 (3台之一)</b>：請帶上山並安置在教師宿舍浴室外。");
+            if (["豆淮綸", "陳映筑", "陳思甯"].includes(name)) myPersonalItems.push("🗑️ <b>大垃圾袋 (3個之一)</b>：請協助自備帶上山。");
+            if (["張宸瑜", "陳巧恩"].includes(name)) myPersonalItems.push("🧻 <b>衛生紙 (3串之一)</b>：請協助攜帶上山支援。");
+            if (["陳鄔子涵", "龍耘心"].includes(name)) myPersonalItems.push("🔌 <b>延長線 (3條之一)</b>：社產有部分但請盡量攜帶自備。");
+            if (["蘇緯", "廖俞程", "邱榆鈞"].includes(name)) myPersonalItems.push("🦟 <b>防蚊液 (3罐之一)</b>：請帶上山，學校蚊子較多。");
+            if (["吳秉庭", "彭珣禎", "陳姵妤"].includes(name)) myPersonalItems.push("🖍️ <b>彩色筆 (4盒之一)</b>：請帶至課輔教室。");
+            if (["王昀鍇"].includes(name)) myPersonalItems.push("✂️ <b>剪刀 (5-7把之一)</b>：請自備或帶公用款。");
+            if (["耿筠渟"].includes(name)) myPersonalItems.push("🕳️ <b>打洞機 (3台之一)</b>：週五晚製作名牌需用到！");
+            if (["周筠晰"].includes(name)) myPersonalItems.push("🍶 <b>大空水瓶 (3個之一)</b>：高樓層容易斷水，裝水防備用。");
+
+            let itemHTML = `
+                <ul>
+                    <li>🎒 <b>必備個人行李清單：</b>7/25~7/27 三天早餐、盥洗用品(毛巾/牙刷/沐浴乳)、拖鞋、保暖衣物外套、水壺、雨具、零錢、頸枕眼罩耳塞防打呼。</li>
+                    <li style="margin-top:8px; color: #8e44ad;">📦 <b>大會籌備你需認領的公用備品：</b><br>${myPersonalItems.join('<br>') || '✅ 檢查完畢！你今天沒有分配到大型公用備品，自備個人行李即可。'}</li>
+                </ul>
+            `;
+            document.getElementById('item-schedule-content').innerHTML = itemHTML;
+
+            // B. 課輔年級與夥伴判定
+            let myClassInfo = "ℹ️ 幹部/攝影機動組。";
+            if (["李柏霆", "龍耘心", "王彰儀", "蘇緯", "廖俞程"].includes(name)) {
+                myClassInfo = `🏫 <b>【二年級教室（1樓第二棟3樓）】</b> ｜ 課輔夥伴：${["李柏霆", "龍耘心", "王彰儀", "蘇緯", "廖俞程"].filter(x=>x!==name).join('、')}`;
+            } else if (["陳思甯", "雷之語", "邱榆鈞", "陳鄔子涵", "周筠晰"].includes(name)) {
+                myClassInfo = `🏫 <b>【三年級教室（2樓樓梯旁）】</b> ｜ 課輔夥伴：${["陳思甯", "雷之語", "邱榆鈞", "陳鄔子涵", "周筠晰"].filter(x=>x!==name).join('、')}`;
+            } else if (["陳映筑", "陳巧恩", "葉宜麟", "豆淮綸"].includes(name)) {
+                myClassInfo = `🏫 <b>【四年級教室（3樓左側）】</b> ｜ 課輔夥伴：${["陳映筑", "陳巧恩", "葉宜麟", "豆淮綸"].filter(x=>x!==name).join('、')}`;
+            } else if (["張宸瑜", "耿筠渟", "陳姵妤"].includes(name)) {
+                myClassInfo = `🏫 <b>【五年級教室（3樓右側）】</b> ｜ 課輔夥伴：${["張宸瑜", "耿筠渟", "陳姵妤"].filter(x=>x!==name).join('、')}`;
+            }
+
+            // C. 破冰與音樂學堂大隊分組判定 (1~3組)
+            let activityGroupText = "";
+            if (["彭珣禎", "李柏霆", "廖俞程", "梁學銘", "吳一君", "陳姵妤", "耿筠渟"].includes(name)) {
+                activityGroupText = "🚩 <b>【大會第 1 大組】</b> ｜ 同組哥姊：彭珣禎、李柏霆、廖俞程、梁學銘、吳一君、陳姵妤、耿筠渟";
+            } else if (["吳秉庭", "張宸瑜", "陳映筑", "陳鄔子涵", "雷之語", "陳巧恩", "豆淮綸"].includes(name)) {
+                activityGroupText = "🚩 <b>【大會第 2 大組】</b> ｜ 同組哥姊：吳秉庭、張宸瑜、陳映筑、陳鄔子涵、雷之語、陳巧恩、豆淮綸";
+            } else if (["王昀鍇", "邱榆鈞", "周筠晰", "陳思甯", "葉宣麟", "蘇緯", "龍耘心", "王彰儀"].includes(name)) {
+                activityGroupText = "🚩 <b>【大會第 3 大組】</b> ｜ 同組哥姊：王昀鍇、邱榆鈞、周筠晰、陳思甯、葉宣麟、蘇緯、龍耘心、王彰儀";
+            }
+
+            // D. 田野調查組別
+            let fieldworkText = "ℹ️ 機動協調。";
+            if (["王彰儀", "梁學銘", "邱榆鈞"].includes(name)) fieldworkText = "🌾 <b>【田調第 1 組】</b> 夥伴：王彰儀、梁學銘、邱榆鈞";
+            if (["耿筠渟", "李柏霆", "陳思甯"].includes(name)) fieldworkText = "🌾 <b>【田調第 2 組】</b> 夥伴：耿筠渟、李柏霆、陳思甯";
+            if (["豆淮綸", "吳秉庭", "張宸瑜"].includes(name)) fieldworkText = "🌾 <b>【田調第 3 組】</b> 夥伴：豆淮綸、吳秉庭、張宸瑜";
+            if (["龍耘心", "蘇緯", "雷之語", "廖俞程"].includes(name)) fieldworkText = "🌾 <b>【田調第 4 組】</b> 夥伴：龍耘心、蘇緯、雷之語、廖俞程";
+            if (["葉宣麟", "陳映筑", "陳巧恩"].includes(name)) fieldworkText = "🌾 <b>【田調第 5 組】</b> 夥伴：葉宣麟、陳映筑、陳巧恩";
+            if (["陳姵妤", "陳鄔子涵", "周筠晰"].includes(name)) fieldworkText = "🌾 <b>【田調第 6 組】</b> 夥伴：陳姵妤、陳鄔子涵、周筠晰";
+
+            // 交通判斷
+            let friTransport = "🚂 自行乘車（火車客運請保留電子/實體收據打大會統編）。";
             if (["雷之語", "吳秉庭", "豆淮綸", "龍耘心", "李柏霆", "張宸瑜", "周筠晰", "陳思甯", "蘇緯", "耿筠渟", "陳姵妤", "廖俞程", "陳巧恩"].includes(name)) {
-                friTransportGroup = "🚄 <strong>【台北高鐵大會統訂組】</strong>：大會將幫你統一連帶購票！若欲改搭其他交通工具，請千萬要提前通知幹部。";
-            } else if (["王彰儀", "陳鄔子涵", "陳映筑"].includes(name)) {
-                friTransportGroup = "🏡 <strong>【在地台中人組】</strong>：去程大會預設無高鐵/火車票補助。請於 13:10 準時在台中高鐵站與大隊集合包車。";
-            } else if (["葉宣麟"].includes(name)) {
-                friTransportGroup = "🚂 <strong>【去程自行搭火車組】</strong>：請提供實體火車票、或購票證明打統編（92365673）進行報帳。13:10 準時高鐵站集合。";
+                friTransport = "🚄 <b>【台北高鐵大會統訂組】</b>：大會幫你統訂去程高鐵，13:10 台中高鐵站集合。";
             }
 
-            let monTransportGroup = "ℹ️ 請記得於回程包車上或到家後，填寫交通報帳表單，只補助該趟最貴的一筆車資。";
-            if (["雷之語", "豆淮綸", "龍耘心", "李柏霆", "張宸瑜", "周筠晰", "陳思甯", "蘇緯", "耿筠渟", "廖俞程"].includes(name)) {
-                monTransportGroup = "🚄 <strong>【回程台北高鐵統訂組】</strong>：回程高鐵票由大會統一包辦訂購！如有任何行程變動，請記得主動向幹部報備。";
-            } else if (["王彰儀", "陳鄔子涵", "陳映筑", "陳巧恩", "陳姵妤", "吳秉庭"].includes(name)) {
-                monTransportGroup = "🚗 <strong>【回程自行離開/解散組】</strong>：大會回程將不包含高鐵團體票。包車在 19:30 送抵台中高鐵站後，即可自行解散。";
+            let monTransport = "🚗 19:30 抵達台中高鐵站後自由解散。";
+            if (["雷之語", "豆淮綸", "龍耘心", "李柏霆", "張宸瑜", "周筠晰", "陳思甯", "蘇緯", "耿筠渟", "廖俞程", "葉宜麟"].includes(name)) {
+                monTransport = "🚄 <b>【回程台北高鐵統訂組】</b>：大會統一購買回程車票。";
             }
 
-            let friCookInfo = "❌ 今天沒有輪到你煮飯洗碗。";
-            if (["吳秉庭", "王彰儀", "陳姵妤", "蘇緯", "龍耘心"].includes(name)) {
-                friCookInfo = "🔥 <strong>【煮飯組】</strong> 組員：吳秉庭、王彰儀、陳姵妤、蘇緯、龍耘心 (16:30 準時提早備料料理)";
-            } else if (["豆淮綸", "李柏霆", "陳思甯"].includes(name)) {
-                friCookInfo = "🧼 <strong>【洗碗組】</strong> 組員：豆淮綸", "李柏霆", "陳思甯 (負責今日晚餐收拾與洗碗)";
-            }
+            // 廚務週五五
+            let friCook = "❌ 今天沒有輪到你煮飯洗碗。";
+            if (["吳秉庭", "王彰儀", "陳姵妤", "蘇緯", "龍耘心", "葉宣麟"].includes(name)) friCook = "🔥 <b>【晚餐煮飯組】</b> 16:30 開始備料自炊。";
+            if (["豆淮綸", "李柏霆", "陳思甯", "耿筠渟"].includes(name)) friCook = "🧼 <b>【晚餐洗碗收拾組】</b>。";
 
-            let satCookInfo = "❌ 今天沒有輪到你煮飯洗碗。";
-            if (["梁學銘", "邱榆鈞", "周筠晰", "雷之語"].includes(name)) {
-                satCookInfo = "🔥 <strong>【煮飯組】</strong> 組員：梁學銘", "邱榆鈞", "周筠晰", "雷之語 (16:30 場復開始後立即提早備料)";
-            } else if (["陳巧恩", "陳映筑", "張宸瑜", "廖俞程"].includes(name)) {
-                satCookInfo = "🧼 <strong>【洗碗組】</strong> 組員：陳巧恩", "陳映筑", "張宸瑜", "廖俞程";
-            }
+            // 廚務週六六
+            let satCook = "❌ 今天沒有輪到你煮飯洗碗。";
+            if (["梁學銘", "邱榆鈞", "周筠晰", "雷之語", "陳鄔子涵"].includes(name)) satCook = "🔥 <b>【晚餐煮飯組】</b> 16:30 場復後立刻提早備料。";
+            if (["陳巧恩", "陳映筑", "張宸瑜", "廖俞程"].includes(name)) satCook = "🧼 <b>【晚餐洗碗收拾組】</b>。";
 
-            const fallbackInstructorMsg = "<span class='instructor-badge'>ℹ️ 若隊輔名單無你，可能為【教案講師/主課負責人】或【排休】</span>";
 
+            // 渲染各天頁面
             document.getElementById('fri-schedule-content').innerHTML = `
                 <div class="schedule-sub-block" style="border-left:3px solid #3498db;">
-                    <h5>🚌 去程集合交通提醒</h5>
-                    <ul><li>${friTransportGroup}</li></ul>
+                    <h5>🚌 去程集合與集體購票狀態</h5>
+                    <ul><li>${friTransport}</li></ul>
                 </div>
                 <div class="schedule-sub-block">
-                    <h5>🍳 廚務分工</h5>
-                    <ul><li><strong>組別與組員：</strong>${friCookInfo}</li></ul>
+                    <h5>🍳 廚務職責</h5>
+                    <ul><li>${friCook}</li></ul>
                 </div>
                 <div class="schedule-sub-block">
-                    <h5>🚿 盥洗配備 (20:00 開始開洗)</h5>
-                    <ul>
-                        <li><strong>洗澡順序英文字母：</strong> ⏳ 待公佈 (進浴室洗前記得tag下一位等)</li>
-                    </ul>
+                    <h5>🚿 盥洗沐浴排班 (20:00 準時開開洗)</h5>
+                    <ul><li>${getBathInfo("禮拜五", name)}</li></ul>
                 </div>
             `;
 
             document.getElementById('sat-schedule-content').innerHTML = `
-                <div class="schedule-sub-block">
-                    <h5>🏫 日間課輔與午休 (注意 12:40 分界線)</h5>
-                    <ul>
-                        <li><strong>課輔、午休負責狀態：</strong> ⏳ 待公佈</li>
-                    </ul>
+                <div class="schedule-sub-block" style="border-left:3px solid #2ecc71;">
+                    <h5>🏫 全日課輔年級班級</h5>
+                    <ul><li>${myClassInfo}</li></ul>
+                </div>
+                <div class="schedule-sub-block" style="border-left:3px solid #e67e22;">
+                    <h5>🎉 10:10 支援前線大破冰活動分組</h5>
+                    <ul><li>${activityGroupText}</li></ul>
                 </div>
                 <div class="schedule-sub-block">
-                    <h5>🎨 暈染畫 / 📢 傳聲筒 / 🏃 科普大地教案</h5>
-                    <ul>
-                        <li><strong>負責帶隊第幾組：</strong> ⏳ 待公佈 ${fallbackInstructorMsg}</li>
-                    </ul>
+                    <h5>🎨 11:00 核心科普一：暈染畫教案分組</h5>
+                    <ul><li>${getCourseInfo("暈染畫", name)}</li></ul>
                 </div>
                 <div class="schedule-sub-block">
-                    <h5>🍳 廚務分工</h5>
-                    <ul><li><strong>組別與組員：</strong>${satCookInfo}</li></ul>
+                    <h5>📢 13:30 核心科普二：傳聲筒教案分組</h5>
+                    <ul><li>${getCourseInfo("傳聲筒", name)}</li></ul>
                 </div>
                 <div class="schedule-sub-block">
-                    <h5>🚿 盥洗配備 (20:00 開始開洗)</h5>
-                    <ul>
-                        <li><strong>洗澡順序英文字母：</strong> ⏳ 待公佈</li>
-                    </ul>
+                    <h5>🏃 14:30 核心科普三：科普大地教案分組</h5>
+                    <ul><li>${getCourseInfo("大地", name)}</li></ul>
+                </div>
+                <div class="schedule-sub-block">
+                    <h5>🍳 廚務職責</h5>
+                    <ul><li>${satCook}</li></ul>
+                </div>
+                <div class="schedule-sub-block">
+                    <h5>🚿 盥洗沐浴排班</h5>
+                    <ul><li>${getBathInfo("禮拜六", name)}</li></ul>
                 </div>
             `;
 
             document.getElementById('sun-schedule-content').innerHTML = `
-                <div class="schedule-sub-block">
-                    <h5>🎵 音樂學堂 / ✈️ 紙飛機 / 🚗 氣球車 / 🏆 大運動會</h5>
-                    <ul>
-                        <li><strong>負責帶隊組別：</strong> ⏳ 待公佈 ${fallbackInstructorMsg}</li>
-                    </ul>
+                <div class="schedule-sub-block" style="border-left:3px solid #e67e22;">
+                    <h5>🎵 09:30 布農音樂小學堂（學拍手歌競賽）分組</h5>
+                    <ul><li>${activityGroupText}</li></ul>
                 </div>
                 <div class="schedule-sub-block">
-                    <h5>🚿 盥洗配備 (20:00 大檢討後準時開洗)</h5>
-                    <ul>
-                        <li><strong>洗澡順序英文字母：</strong> ⏳ 待公佈</li>
-                    </ul>
+                    <h5>✈️ 11:00 核心科普四：紙飛機教案分組</h5>
+                    <ul><li>${getCourseInfo("紙飛機", name)}</li></ul>
+                </div>
+                <div class="schedule-sub-block">
+                    <h5>🚗 13:30 核心科普五：氣球車教案分組</h5>
+                    <ul><li>${getCourseInfo("氣球車", name)}</li></ul>
+                </div>
+                <div class="schedule-sub-block">
+                    <h5>🏆 14:30 核心大活動：全社大運動會教案分組</h5>
+                    <ul><li>${getCourseInfo("運動會", name)}</li></ul>
+                </div>
+                <div class="schedule-sub-block">
+                    <h5>🚿 盥洗沐浴排班 (20:00 大檢討會完開洗)</h5>
+                    <ul><li>${getBathInfo("禮拜天", name)}</li></ul>
                 </div>
             `;
 
             document.getElementById('mon-schedule-content').innerHTML = `
-                <div class="schedule-sub-block">
-                    <h5>🧩 部落闖關解謎 (12:25)</h5>
-                    <ul>
-                        <li><strong>部落燒腦闖關賽組員：</strong> ⏳ 待公佈 (每人需帶 50 元零錢、買東西打統編)</li>
-                    </ul>
+                <div class="schedule-sub-block" style="border-left:3px solid #1abc9c;">
+                    <h5>🌾 日間文健站田野調查小組</h5>
+                    <ul><li>${fieldworkText}</li></ul>
                 </div>
                 <div class="schedule-sub-block" style="border-left:3px solid #e74c3c;">
-                    <h5>🚌 回程賦歸交通提醒</h5>
-                    <ul><li>${monTransportGroup}</li></ul>
+                    <h5>🚌 回程賦歸交通購票狀態</h5>
+                    <ul><li>${monTransport}</li></ul>
                 </div>
             `;
 
